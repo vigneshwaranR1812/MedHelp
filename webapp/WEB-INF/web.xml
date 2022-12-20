@@ -13,10 +13,15 @@
     <servlet-class>SignUp</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>AddMed</servlet-name>
-    <servlet-class>SignUp</servlet-class>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>Login</servlet-class>
   </servlet>
-  <servlet-mapping>
+  <servlet>
+     <servlet-name>AddMed</servlet-name>
+     <servlet-class>AddMed</servlet-class>
+  </servlet>
+
+    <servlet-mapping>
     <servlet-name>ABC</servlet-name>
     <url-pattern>/abc</url-pattern>
   </servlet-mapping>
@@ -25,7 +30,11 @@
     <url-pattern>/signUp</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>AddMed</servlet-name>
-    <url-pattern>/addMed</url-pattern>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/login</url-pattern>
   </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddMed</servlet-name>
+        <url-pattern>/addMed</url-pattern>
+    </servlet-mapping>
 </web-app>
