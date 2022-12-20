@@ -53,10 +53,12 @@ public class SignUp extends HttpServlet {
             System.out.println(password);
             System.out.println(address);
             System.out.println(phoneNumber);
-            String sql = "insert into userDetails values("+id+",'" + name + "','" + password + "','" + address + "'," + phoneNumber + ",)";
+            String sql = "insert into userDetails values("+id+",'" + name + "','" + password + "','" + address + "'," + phoneNumber + ")";
 
             int m = st.executeUpdate(sql);
+            System.out.println(m);
             if (m == 1) {
+                System.out.println("Hey");
                 HttpSession session=req.getSession();
                 session.setAttribute("name",name);
                 session.setAttribute("userid",id);

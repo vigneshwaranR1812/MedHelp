@@ -12,6 +12,10 @@
     <servlet-name>SignUp</servlet-name>
     <servlet-class>SignUp</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AddMed</servlet-name>
+    <servlet-class>SignUp</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>ABC</servlet-name>
     <url-pattern>/abc</url-pattern>
@@ -19,5 +23,9 @@
   <servlet-mapping>
     <servlet-name>SignUp</servlet-name>
     <url-pattern>/signUp</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddMed</servlet-name>
+    <url-pattern>/addMed</url-pattern>
   </servlet-mapping>
 </web-app>
