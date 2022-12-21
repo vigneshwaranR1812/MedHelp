@@ -27,11 +27,11 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>SignUp</servlet-name>
-    <url-pattern>/signUp</url-pattern>
+    <url-pattern>/Login_v3/signUp</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
-    <url-pattern>/login</url-pattern>
+    <url-pattern>/Login_v3/login</url-pattern>
   </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddMed</servlet-name>

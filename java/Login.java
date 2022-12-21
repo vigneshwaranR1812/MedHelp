@@ -13,7 +13,7 @@ import java.sql.Statement;
 public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //userid name password address phno age
-        int phoneNumber = Integer.parseInt(req.getParameter("phno"));
+        long phoneNumber = Long.parseLong(req.getParameter("phno"));
         String password = req.getParameter("password");
 
         String url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -42,7 +42,7 @@ public class Login extends HttpServlet {
             if (rs.next()) {
                 int id=rs.getInt("userid");
                 String name = rs.getString("name");
-                int phno = rs.getInt("phno");
+                long phno = rs.getLong("phno");
                 String address = rs.getString("address");
                 HttpSession session=req.getSession();
                 session.setAttribute("name",name);

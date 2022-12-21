@@ -17,7 +17,7 @@ public class SignUp extends HttpServlet {
         String name = req.getParameter("name");
         String password = req.getParameter("password");
         String address = req.getParameter("address");
-        int phoneNumber = Integer.parseInt(req.getParameter("phno"));
+        long phoneNumber = Long.parseLong(req.getParameter("phno"));
         int id=1;
         String url = "jdbc:oracle:thin:@localhost:1521:xe";
         String user = "system";
