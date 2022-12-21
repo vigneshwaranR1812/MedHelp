@@ -1,3 +1,4 @@
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -51,12 +52,11 @@ public class Login extends HttpServlet {
                 session.setAttribute("address",address);
                 System.out.println("Nakku1");
                 if(name.equals("admin")){
-                    //RequestDispatcher rd = req.getRequestDispatcher("servlet2");
-                    // rd.forward(req, resp);
+                    resp.sendRedirect("addMed.html");
+
                 }
                 else{
-                    //RequestDispatcher rd = req.getRequestDispatcher("servlet2");
-                    // rd.forward(req, resp);
+                    resp.sendRedirect("filter.html");
                 }
             }
             else{

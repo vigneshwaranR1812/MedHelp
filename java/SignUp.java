@@ -66,12 +66,10 @@ public class SignUp extends HttpServlet {
                 session.setAttribute("address",address);
                 System.out.println("Nakku1");
                 if(name.equals("admin")){
-                    RequestDispatcher rd = req.getRequestDispatcher("servlet2");
-                     rd.forward(req, resp);
+                    resp.sendRedirect("addMed.html");
                 }
                 else{
-                    //RequestDispatcher rd = req.getRequestDispatcher("servlet2");
-                    // rd.forward(req, resp);
+                    resp.sendRedirect("filter.html");
                 }
             }
             else{
