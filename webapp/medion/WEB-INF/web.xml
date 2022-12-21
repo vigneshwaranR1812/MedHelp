@@ -38,7 +38,7 @@
   <!--  Filter Class-->
   <servlet-mapping>
     <servlet-name>FilterMed</servlet-name>
-    <url-pattern>/filter</url-pattern>
+    <url-pattern>/Login_v3/filter</url-pattern>
   </servlet-mapping>
   <!--  Add Medicine if admin-->
 
