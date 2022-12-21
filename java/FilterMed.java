@@ -8,15 +8,18 @@ import java.io.IOException;
 public class FilterMed extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 //        medtype comp manufactured by age uses
-        String medType = req.getParameter("medType");
-        String composition = req.getParameter("composition");
-        String manufacturedBy = req.getParameter("manufacturedBy");
-        int age = Integer.parseInt(req.getParameter("age"));
+        String medName = req.getParameter("medName");
+        String medtype = req.getParameter("medtype");
+        String medComposition = req.getParameter("medComposition");
+        String manufacturedby = req.getParameter("manufacturedby");
+        String price = req.getParameter("price");
+        String lowerAge = req.getParameter("lowerAge");
+        String upperAge = req.getParameter("upperAge");
         String uses = req.getParameter("uses");
 
-        System.out.println("medType : "+medType+" "+"composition : "+composition+" "+"manufacturedBy : "+manufacturedBy+" "+"age : "+age+" "+"uses : "+uses+" ");
+        System.out.println("medType : "+medtype+" "+"composition : "+medComposition+" ");
         try{
-            resp.sendRedirect( "../webapp/medion/search.jsp?medType="+medType+"composition="+composition+"manufacturedBy="+manufacturedBy+"age="+age+"uses="+uses);
+            resp.sendRedirect( "../search.jsp?medName="+medName+"medtype="+medtype+"medComposition="+medComposition+"manufacturedby="+manufacturedby+"price="+price+"lowerAge="+lowerAge+"upperAge="+upperAge+"uses="+uses);
         }
         catch (Exception e){
             System.out.println(e);
