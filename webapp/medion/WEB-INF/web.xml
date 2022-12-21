@@ -35,6 +35,6 @@
   </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddMed</servlet-name>
-        <url-pattern>/addMed</url-pattern>
+        <url-pattern>/Login_v3/addMed</url-pattern>
     </servlet-mapping>
 </web-app>

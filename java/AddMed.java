@@ -13,6 +13,7 @@ import java.sql.Statement;
 public class AddMed extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String medtype = req.getParameter("medtype");
         String medName = req.getParameter("medName");
         String medComposition = req.getParameter("medComposition");
         String manufacturedBy = req.getParameter("manufacturedBy");
@@ -50,7 +51,7 @@ public class AddMed extends HttpServlet {
         }
         try{
 
-            String sql = "insert into medicine values("+id+",'" + medName + "','" + medComposition + "','" + manufacturedBy + "','" + price + "'," + upper + "," + lower + ",'" + uses + "')";
+            String sql = "insert into medicine values("+id+",'" + medName + "','" + medComposition + "','" + manufacturedBy + "','" + price + "'," + upper + "," + lower + ",'" + uses + "','"+medtype+"')";
 
             int m = st.executeUpdate(sql);
             if (m == 1) {

@@ -66,8 +66,8 @@ public class SignUp extends HttpServlet {
                 session.setAttribute("address",address);
                 System.out.println("Nakku1");
                 if(name.equals("admin")){
-                    //RequestDispatcher rd = req.getRequestDispatcher("servlet2");
-                    // rd.forward(req, resp);
+                    RequestDispatcher rd = req.getRequestDispatcher("servlet2");
+                     rd.forward(req, resp);
                 }
                 else{
                     //RequestDispatcher rd = req.getRequestDispatcher("servlet2");
