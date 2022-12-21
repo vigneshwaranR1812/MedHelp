@@ -4,10 +4,7 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-    <servlet-name>ABC</servlet-name>
-    <servlet-class>Database</servlet-class>
-  </servlet>
+<!--  Registration-->
   <servlet>
     <servlet-name>SignUp</servlet-name>
     <servlet-class>SignUp</servlet-class>
@@ -16,15 +13,19 @@
     <servlet-name>Login</servlet-name>
     <servlet-class>Login</servlet-class>
   </servlet>
+
+<!--  Filter Class-->
+  <servlet>
+    <servlet-name>FilterMed</servlet-name>
+    <servlet-class>FilterMed</servlet-class>
+  </servlet>
+<!--  Add Medicine if admin-->
   <servlet>
      <servlet-name>AddMed</servlet-name>
      <servlet-class>AddMed</servlet-class>
   </servlet>
 
-    <servlet-mapping>
-    <servlet-name>ABC</servlet-name>
-    <url-pattern>/abc</url-pattern>
-  </servlet-mapping>
+  <!--  Registration-->
   <servlet-mapping>
     <servlet-name>SignUp</servlet-name>
     <url-pattern>/Login_v3/signUp</url-pattern>
@@ -33,7 +34,15 @@
     <servlet-name>Login</servlet-name>
     <url-pattern>/Login_v3/login</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+
+  <!--  Filter Class-->
+  <servlet-mapping>
+    <servlet-name>FilterMed</servlet-name>
+    <url-pattern>/Login_v3/filter</url-pattern>
+  </servlet-mapping>
+  <!--  Add Medicine if admin-->
+
+  <servlet-mapping>
         <servlet-name>AddMed</servlet-name>
         <url-pattern>/Login_v3/addMed</url-pattern>
     </servlet-mapping>
