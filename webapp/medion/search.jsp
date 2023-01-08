@@ -8,33 +8,16 @@
         String pass = "root";
         Connection con = null;
         Statement st=null;
-        System.out.println("Otha");
         try {
             DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
             con = DriverManager.getConnection(url, user,pass);
             st= con.createStatement();
-            try{
-                 if(request.getParameter("cartid")!=null){
-                   System.out.println("Inside if");
-                   int cartid=Integer.parseInt(request.getParameter("cartid"));
-                   int u=(Integer) session.getAttribute("userid");
-                   String squery="update cart set status='inactive' where carid="+cartid+" and userid="u;
-                   st.executeUpdate(squery);
-                   response.sendRedirect("cart.jsp");
-                 }
-            }
-            catch(Exception e){
-                System.out.println("Nakku 2.0");
-            }
-
-
         }
         catch (Exception e) {
             System.out.println(e);
-            System.out.println("nakku2-1");
+            System.out.println("Cannot connect to database");
         }
         ResultSet resultSet = null;
-        ResultSet resultSet1 = null;
 %>
 
 <!DOCTYPE html>
@@ -123,48 +106,118 @@
       </h2>
       <%
           try{
-                      int userid = (Integer) session.getAttribute("userid");
-                      System.out.println(userid);
-                      String sql = "select medname,medtype,medcomposition,manufacturedby,price,uses,carid from cart,medicine,userDetails where cart.medid=medicine.medid and cart.status='active' and cart.userid=userDetails.userid and userDetails.userid="+userid;
-                      String query="select count(medname) as c from cart,medicine,userDetails where cart.medid=medicine.medid and cart.userid=userDetails.userid and cart.status='active' and userDetails.userid="+userid;
-                      resultSet1 = st.executeQuery(query);
-                      System.out.println("Query Executed");
-
-                      int count=0;
-                      if(resultSet1.next()){
-                      count=resultSet1.getInt("c");
-                      System.out.println(resultSet1.getInt("c"));
-                      }
-
-                      resultSet = st.executeQuery(sql);
-                      System.out.println("Query Executed");
-                      if(resultSet.next()){
-                         System.out.println(resultSet.getString("medname"));
-                      }
-
-                      System.out.println(count);
-
+boolean flag = true;
+        String medName = request.getParameter("medName");
+        String medtype = request.getParameter("medtype");
+        String medComposition = request.getParameter("medComposition");
+        String manufacturedby = request.getParameter("manufacturedby");
+        String price = request.getParameter("price");
+        String lowerAge = request.getParameter("lowerAge");
+        String upperAge = request.getParameter("upperAge");
+        String uses = request.getParameter("uses");
+        System.out.println("medName= "+medName+" medtype= "+medtype+" medComposition= "+medComposition+"manufacturedby="+manufacturedby+"price="+price+"lowerAge="+lowerAge+"upperAge="+upperAge+"uses="+uses);
+        String resultQuery = "select medid, medname, manufacturedby, medcomposition, price, uses, medtype from medicine where ";
+        if(medName.length()!=0){
+            if(flag==false){
+                resultQuery+=" and ";
+            }
+                                flag=false;
+                                resultQuery+="medname like '%"+medName+"%'";
+                            }
+                            if(medComposition.length()!=0){
+                                if(flag==false){
+                                    resultQuery+=" and ";
+                                }
+                                flag=false;
+                                String[] composition = medComposition.split(",");
+                                int stringLength = composition.length;
+                                int count=0;
+                                for(String name : composition){
+                                    count++;
+                                    resultQuery+="medcomposition like '%"+name+"%'";
+                                    if(count < stringLength) {
+                                        resultQuery+=" or ";
+                                    }
+                                }
+                            }
+                            if(medtype.length()!=0){
+                                if(flag==false){
+                                    resultQuery+=" and ";
+                                }
+                                flag=false;
+                                resultQuery+="medtype like '%"+medtype+"%'";
+                            }
+                            if(manufacturedby.length()!=0) {
+                                if(flag==false){
+                                    resultQuery+=" and ";
+                                }
+                                flag=false;
+                                resultQuery+="manufacturedby like '%"+manufacturedby+"%'";
+                            }
+                            if(price.length()!=0) {
+                                if(flag==false){
+                                    resultQuery+=" and ";
+                                }
+                                flag=false;
+                                resultQuery+="price <= "+price;
+                            }
+                            if(lowerAge.length()!=0){
+                                if(flag==false){
+                                    resultQuery+=" and ";
+                                }
+                                flag=false;
+                                resultQuery+="lowerage >= "+lowerAge;
+                            }
+                            if(upperAge.length()!=0){
+                                if(flag==false){
+                                    resultQuery+=" and ";
+                                }
+                                flag=false;
+                                resultQuery+="upperage >= "+upperAge;
+                            }
+                            if(uses.length()!=0){
+                                if(flag==false){
+                                    resultQuery+=" and ";
+                                }
+                                flag=false;
+                                String[] composition = uses.split(",");
+                                int stringLength = composition.length;
+                                int count=0;
+                                for(String name : composition){
+                                    count++;
+                                    resultQuery+="uses like '%"+name+"%'";
+                                    if(count < stringLength) {
+                                        resultQuery+=" or ";
+                                    }
+                                }
+                            }
+                            resultSet = st.executeQuery(resultQuery);
+                            int count=0;
+                            while(resultSet.next()){
+                                count++;
+                            }
+                            resultSet = st.executeQuery(resultQuery);
                       for(int j=0;j<count/5;j++){
       %>
-       <div style="display:flex;flex-direction:row">
+       <div style="display:flex;flex-direction:row;">
        <%
             int k=0;
             while(k<5){
                 if(resultSet.next()){
-                System.out.println(resultSet.getString("medtype"));
+                    System.out.println(resultSet.getString("medtype"));
        %>
             <div class="item" style="margin-right:60px">
                             <div class="box">
                               <div class="btn_container">
-                                <a href="cart.jsp?cartid="<%=resultSet.getInt("carid") %>>
-                                  Remove
+                                <a href="">
+                                  Buy Now
                                 </a>
                               </div>
                               <div class="img-box">
-                                    <% if(resultSet.getString("medtype").equals("Oil")){%>
-                                    <img src="images/oil.jpg" alt="">
-                                    <% } %>
-                                   <% if(resultSet.getString("medtype").equals("Shampoo")){%>
+                              <% if(resultSet.getString("medtype").equals("Oil")){%>
+                                                                 <img src="images/oil.jpg" alt="">
+                                                                 <% } %>
+                                <% if(resultSet.getString("medtype").equals("Shampoo")){%>
                                      <img src="images/new_shampoo.jpg" alt="">
                                    <% } %>
                                    <% if(resultSet.getString("medtype").equals("Facewash")){%>
@@ -196,7 +249,12 @@
                                   <h6>
                                     <%=resultSet.getString("medtype") %>
                                   </h6>
-
+                                  <h6 class="price">
+                                      <span>
+                                        Rs
+                                      </span>
+                                    <%=resultSet.getInt("price") %>
+                                  </h6>
                                 </div>
                               </div>
                                <div class="detail-box">
@@ -210,7 +268,10 @@
                                     <%=resultSet.getString("manufacturedby") %>
                                   </h6>
                                   <h6 class="price">
-                                    <%="Rs "+resultSet.getInt("price") %>
+                                      <span>
+                                        ₹
+                                      </span>
+                                    <%=resultSet.getInt("price") %>
                                   </h6>
                                 </div>
                               </div>
@@ -238,14 +299,11 @@
                       <div class="box">
                       <div class="btn_container">
                       <a href="">
-                        Remove
+                        Buy Now
                       </a>
                     </div>
                      <div class="img-box">
-                                <% if(resultSet.getString("medtype").equals("Oil")){%>
-                                <img src="images/oil.jpg" alt="">
-                                <% } %>
-                                <% if(resultSet.getString("medtype").equals("Shampoo")){%>
+                    <% if(resultSet.getString("medtype").equals("Shampoo")){%>
                                      <img src="images/new_shampoo.jpg" alt="">
                                    <% } %>
                                    <% if(resultSet.getString("medtype").equals("Facewash")){%>
@@ -253,6 +311,9 @@
                                    <% } %>
                                    <% if(resultSet.getString("medtype").equals("Drops")){%>
                                    <img src="images/eyedrops.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Oil")){%>
+                                   <img src="images/oil.jpg" alt="">
                                    <% } %>
                                    <% if(resultSet.getString("medtype").equals("Pills")){%>
                                    <img src="images/p-2.jpg" alt="">
@@ -277,7 +338,10 @@
                         <h6>
                         <%=resultSet.getString("medtype") %>
                         </h6>
-
+                        <h6 class="price">
+                        <span>₹</span>
+                        <%=resultSet.getInt("price") %>
+                        </h6>
                        </div>
                        </div>
                        <div class="detail-box">
@@ -291,7 +355,10 @@
                                     <%=resultSet.getString("manufacturedby") %>
                                   </h6>
                                   <h6 class="price">
-                                    <%="Rs "+resultSet.getInt("price") %>
+                                      <span>
+                                        Rs
+                                      </span>
+                                    <%=resultSet.getInt("price") %>
                                   </h6>
                                 </div>
                               </div>
@@ -305,12 +372,11 @@
                       </div>
                     <%
                     }
-
                         System.out.println("After the Code");
                         }
                         catch(Exception e){
                             System.out.println(e);
-                            System.out.println("nakku2-2");
+                            System.out.println("Cannot retrieve data! SQL ERROR");
                     }
                     %>
 
