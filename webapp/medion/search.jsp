@@ -226,6 +226,7 @@ boolean flag = true;
             int k=0;
             while(k<4){
                 if(resultSet.next()){
+                    System.out.println(resultSet.getString("medtype"));
        %>
             <div class="item" style="margin-right:40px">
                             <div class="box">
@@ -314,6 +315,7 @@ boolean flag = true;
                       int k=0;
                       while(k<4){
                           if(resultSet.next()){
+                          System.out.println(resultSet.getString("medtype"));
                  %>
                       <div class="item" style="margin-right:40px">
                       <div class="box">
