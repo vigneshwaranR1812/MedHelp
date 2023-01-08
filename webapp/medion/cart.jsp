@@ -148,7 +148,7 @@
                               <div class="img-box">
                                    <% if(resultSet.getString("medtype").equals("Shampoo")){%>
                                      <img src="images/shampoo.jpg" alt="">
-                                   <% } %
+                                   <% } %>
                                    <% if(resultSet.getString("medtype").equals("Facewash")){%>
                                    <img src="images/facewash.jpg" alt="">
                                    <% } %>
@@ -235,7 +235,7 @@
                      <div class="img-box">
                                 <% if(resultSet.getString("medtype").equals("Shampoo")){%>
                                      <img src="images/shampoo.jpg" alt="">
-                                   <% } %
+                                   <% } %>
                                    <% if(resultSet.getString("medtype").equals("Facewash")){%>
                                    <img src="images/facewash.jpg" alt="">
                                    <% } %>
