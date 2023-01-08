@@ -142,12 +142,33 @@
                             <div class="box">
                               <div class="btn_container">
                                 <a href="">
-                                  Buy Now
+                                  Remove
                                 </a>
                               </div>
                               <div class="img-box">
+                                   <% if(resultSet.getString("medtype").equals("Shampoo")){%>
+                                     <img src="images/shampoo.jpg" alt="">
+                                   <% } %
+                                   <% if(resultSet.getString("medtype").equals("Facewash")){%>
+                                   <img src="images/facewash.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Drops")){%>
+                                   <img src="images/eyedrops.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Pills")){%>
+                                   <img src="images/p-2.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Ointment")){%>
+                                     <img src="images/ointment.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Cream")){%>
+                                     <img src="images/cream.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Syrup")){%>
+                                   <img src="images/syrup.jpg" alt="">
+                                   <% } %>
 
-                                <img src="images/p-6.jpg" alt="">
+
                               </div>
                               <div class="detail-box">
                                 <div class="star_container">
@@ -179,7 +200,7 @@
                                   </h6>
                                   <h6 class="price">
                                       <span>
-                                        $
+                                        ₹
                                       </span>
                                     <%=resultSet.getInt("price") %>
                                   </h6>
@@ -208,11 +229,31 @@
                       <div class="box">
                       <div class="btn_container">
                       <a href="">
-                        Buy Now
+                        Remove
                       </a>
                     </div>
                      <div class="img-box">
-                      <img src="images/p-6.jpg" alt="">
+                                <% if(resultSet.getString("medtype").equals("Shampoo")){%>
+                                     <img src="images/shampoo.jpg" alt="">
+                                   <% } %
+                                   <% if(resultSet.getString("medtype").equals("Facewash")){%>
+                                   <img src="images/facewash.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Drops")){%>
+                                   <img src="images/eyedrops.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Pills")){%>
+                                   <img src="images/p-2.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Ointment")){%>
+                                     <img src="images/ointment.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Cream")){%>
+                                     <img src="images/cream.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Syrup")){%>
+                                   <img src="images/syrup.jpg" alt="">
+                                   <% } %>
                        </div>
                       <div class="detail-box">
                        <div class="star_container">
@@ -242,7 +283,7 @@
                                   </h6>
                                   <h6 class="price">
                                       <span>
-                                        $
+                                        ₹
                                       </span>
                                     <%=resultSet.getInt("price") %>
                                   </h6>

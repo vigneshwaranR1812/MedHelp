@@ -219,7 +219,7 @@ boolean flag = true;
 
                             resultSet = st.executeQuery(resultQuery);
 
-                      for(int j=0;j<=count/4;j++){
+                      for(int j=0;j<count/4;j++){
       %>
        <div style="display:flex;flex-direction:row">
        <%
@@ -235,7 +235,27 @@ boolean flag = true;
                                 </a>
                               </div>
                               <div class="img-box">
-                                <img src="images/p-6.jpg" alt="">
+                                <% if(resultSet.getString("medtype").equals("Shampoo")){%>
+                                     <img src="images/shampoo.jpg" alt="">
+                                   <% } %
+                                   <% if(resultSet.getString("medtype").equals("Facewash")){%>
+                                   <img src="images/facewash.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Drops")){%>
+                                   <img src="images/eyedrops.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Pills")){%>
+                                   <img src="images/p-2.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Ointment")){%>
+                                     <img src="images/ointment.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Cream")){%>
+                                     <img src="images/cream.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Syrup")){%>
+                                   <img src="images/syrup.jpg" alt="">
+                                   <% } %>
                               </div>
                               <div class="detail-box">
                                 <div class="star_container">
@@ -249,7 +269,7 @@ boolean flag = true;
                                   </h6>
                                   <h6 class="price">
                                       <span>
-                                        $
+                                        ₹
                                       </span>
                                     <%=resultSet.getInt("price") %>
                                   </h6>
@@ -300,7 +320,27 @@ boolean flag = true;
                       </a>
                     </div>
                      <div class="img-box">
-                      <img src="images/p-6.jpg" alt="">
+                    <% if(resultSet.getString("medtype").equals("Shampoo")){%>
+                                     <img src="images/shampoo.jpg" alt="">
+                                   <% } %
+                                   <% if(resultSet.getString("medtype").equals("Facewash")){%>
+                                   <img src="images/facewash.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Drops")){%>
+                                   <img src="images/eyedrops.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Pills")){%>
+                                   <img src="images/p-2.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Ointment")){%>
+                                     <img src="images/ointment.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Cream")){%>
+                                     <img src="images/cream.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Syrup")){%>
+                                   <img src="images/syrup.jpg" alt="">
+                                   <% } %>
                        </div>
                       <div class="detail-box">
                        <div class="star_container">
@@ -313,7 +353,7 @@ boolean flag = true;
                         <%=resultSet.getString("medtype") %>
                         </h6>
                         <h6 class="price">
-                        <span>$</span>
+                        <span>₹</span>
                         <%=resultSet.getInt("price") %>
                         </h6>
                        </div>
