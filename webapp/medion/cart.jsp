@@ -135,8 +135,8 @@
        <%
             int k=0;
             while(k<4){
-                if(resultSet.next())
-                {System.out.println(resultSet.getString("medname"));
+                if(resultSet.next()){
+                System.out.println(resultSet.getString("medtype"));
        %>
             <div class="item" style="margin-right:40px">
                             <div class="box">
@@ -146,9 +146,9 @@
                                 </a>
                               </div>
                               <div class="img-box">
-                              <% if(resultSet.getString("medtype").equals("Oil")){%>
-                               <img src="images/oil.jpg" alt="">
-                              <% } %>
+                                    <% if(resultSet.getString("medtype").equals("Oil")){%>
+                                    <img src="images/oil.jpg" alt="">
+                                    <% } %>
                                    <% if(resultSet.getString("medtype").equals("Shampoo")){%>
                                      <img src="images/new_shampoo.jpg" alt="">
                                    <% } %>
@@ -227,6 +227,7 @@
                       int k=0;
                       while(k<4){
                           if(resultSet.next()){
+                          System.out.println(resultSet.getString("medtype"));
                  %>
                       <div class="item" style="margin-right:40px">
                       <div class="box">
