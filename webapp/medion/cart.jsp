@@ -43,9 +43,11 @@
     try{
                 int userid = (Integer) session.getAttribute("userid");
                 System.out.println(userid);
-                String sql = "select medname,medtype,medcomposition,manufacturedby,price,uses,carid from cart,medicine,userDetails where cart.medid=medicine.medid and cart.userid=userDetails.userid and userDetails.userid=1";
+                //String sql = "select medname,medtype,medcomposition,manufacturedby,price,uses,carid from cart,medicine,userDetails where cart.medid=medicine.medid and cart.userid=userDetails.userid and userDetails.userid=1";
+                String sql="select carid,cart.medid,cart.userid from cart,medicine,userDetails where cart.medid=medicine.medid and cart.userid=userDetails.userid and userDetails.userid=1";
                 resultSet = st.executeQuery(sql);
-                System.out.println(resultSet);
+                resultSet.next();
+                System.out.println(resultSet.getInt("carid"));
                 System.out.println("Before the Code");
                 while(resultSet.next()){
                 System.out.println(resultSet.getInt("carid"));
