@@ -295,7 +295,7 @@ boolean flag = true;
                                   </h6>
                                   <h6 class="price">
                                       <span>
-                                        ₹
+                                        Rs.
                                       </span>
                                     <%=resultSet.getInt("price") %>
                                   </h6>
@@ -365,7 +365,7 @@ boolean flag = true;
                         <%=resultSet.getString("medtype") %>
                         </h6>
                         <h6 class="price">
-                        <span>₹</span>
+                        <span>Rs.</span>
                         <%=resultSet.getInt("price") %>
                         </h6>
                        </div>
