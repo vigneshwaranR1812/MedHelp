@@ -13,6 +13,21 @@
             DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
             con = DriverManager.getConnection(url, user,pass);
             st= con.createStatement();
+            try{
+                 if(request.getParameter("cartid")!=null){
+                   System.out.println("Inside if");
+                   int cartid=Integer.parseInt(request.getParameter("cartid"));
+                   int u=(Integer) session.getAttribute("userid");
+                   String squery="update cart set status='inactive' where carid="+cartid+" and userid="u;
+                   st.executeUpdate(squery);
+                   response.sendRedirect("cart.jsp");
+                 }
+            }
+            catch(Exception e){
+                System.out.println("Nakku 2.0");
+            }
+
+
         }
         catch (Exception e) {
             System.out.println(e);
@@ -110,8 +125,8 @@
           try{
                       int userid = (Integer) session.getAttribute("userid");
                       System.out.println(userid);
-                      String sql = "select medname,medtype,medcomposition,manufacturedby,price,uses,carid from cart,medicine,userDetails where cart.medid=medicine.medid and cart.userid=userDetails.userid and userDetails.userid="+userid;
-                      String query="select count(medname) as c from cart,medicine,userDetails where cart.medid=medicine.medid and cart.userid=userDetails.userid and userDetails.userid="+userid;
+                      String sql = "select medname,medtype,medcomposition,manufacturedby,price,uses,carid from cart,medicine,userDetails where cart.medid=medicine.medid and cart.status='active' and cart.userid=userDetails.userid and userDetails.userid="+userid;
+                      String query="select count(medname) as c from cart,medicine,userDetails where cart.medid=medicine.medid and cart.userid=userDetails.userid and cart.status='active' and userDetails.userid="+userid;
                       resultSet1 = st.executeQuery(query);
                       System.out.println("Query Executed");
 
@@ -141,7 +156,7 @@
             <div class="item" style="margin-right:60px">
                             <div class="box">
                               <div class="btn_container">
-                                <a href="">
+                                <a href="cart.jsp?cartid="<%=resultSet.getInt("carid") %>>
                                   Remove
                                 </a>
                               </div>
@@ -170,8 +185,6 @@
                                    <% if(resultSet.getString("medtype").equals("Syrup")){%>
                                    <img src="images/syrup.jpg" alt="">
                                    <% } %>
-
-
                               </div>
                               <div class="detail-box">
                                 <div class="star_container">
