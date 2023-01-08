@@ -156,7 +156,7 @@
             <div class="item" style="margin-right:60px">
                             <div class="box">
                               <div class="btn_container">
-                                <a href="cart.jsp?cartid="<%=resultSet.getInt("carid") %>>
+                                <a href=<%="cart.jsp?cartid="+resultSet.getInt("carid") %>>
                                   Remove
                                 </a>
                               </div>
@@ -237,7 +237,7 @@
                       <div class="item" style="margin-right:60px">
                       <div class="box">
                       <div class="btn_container">
-                      <a href="cart.jsp?cartid="<%=resultSet.getInt("carid") %>>
+                      <a href=<%="cart.jsp?cartid="+resultSet.getInt("carid") %>
                         Remove
                       </a>
                     </div>
