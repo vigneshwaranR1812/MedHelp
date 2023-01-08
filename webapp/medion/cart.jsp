@@ -147,7 +147,7 @@
                               </div>
                               <div class="img-box">
                               <% if(resultSet.getString("medtype").equals("OIL")){%>
-                                                                 <img src="images/oil.jpg" alt="">
+                                    <img src="images/oil.jpg" alt="">
                                                                  <% } %>
                                    <% if(resultSet.getString("medtype").equals("Shampoo")){%>
                                      <img src="images/new_shampoo.jpg" alt="">
