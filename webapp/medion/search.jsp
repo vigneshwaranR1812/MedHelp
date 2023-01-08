@@ -228,7 +228,7 @@ boolean flag = true;
                 if(resultSet.next()){
                     System.out.println(resultSet.getString("medtype"));
        %>
-            <div class="item" style="margin-right:40px">
+            <div class="item" style="margin-right:60px">
                             <div class="box">
                               <div class="btn_container">
                                 <a href="">
@@ -273,7 +273,7 @@ boolean flag = true;
                                   </h6>
                                   <h6 class="price">
                                       <span>
-                                        ₹
+                                        Rs
                                       </span>
                                     <%=resultSet.getInt("price") %>
                                   </h6>
@@ -317,7 +317,7 @@ boolean flag = true;
                           if(resultSet.next()){
                           System.out.println(resultSet.getString("medtype"));
                  %>
-                      <div class="item" style="margin-right:40px">
+                      <div class="item" style="margin-right:60px">
                       <div class="box">
                       <div class="btn_container">
                       <a href="">
@@ -378,7 +378,7 @@ boolean flag = true;
                                   </h6>
                                   <h6 class="price">
                                       <span>
-                                        ₹
+                                        Rs
                                       </span>
                                     <%=resultSet.getInt("price") %>
                                   </h6>
