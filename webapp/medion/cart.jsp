@@ -183,12 +183,7 @@
                                   <h6>
                                     <%=resultSet.getString("medtype") %>
                                   </h6>
-                                  <h6 class="price">
-                                      <span>
-                                        Rs.
-                                      </span>
-                                    <%=resultSet.getInt("price") %>
-                                  </h6>
+
                                 </div>
                               </div>
                                <div class="detail-box">
@@ -202,10 +197,7 @@
                                     <%=resultSet.getString("manufacturedby") %>
                                   </h6>
                                   <h6 class="price">
-                                      <span>
-                                        ₹
-                                      </span>
-                                    <%=resultSet.getInt("price") %>
+                                    <%="Rs "+resultSet.getInt("price") %>
                                   </h6>
                                 </div>
                               </div>
@@ -272,16 +264,13 @@
                         <h6>
                         <%=resultSet.getString("medtype") %>
                         </h6>
-                        <h6 class="price">
-                        <span>₹</span>
-                        <%=resultSet.getInt("price") %>
-                        </h6>
+
                        </div>
                        </div>
                        <div class="detail-box">
                                 <div class="star_container">
                                   <h6>
-                                      <%=resultSet.getString("medcomposition") %>
+                                      <%resultSet.getString("medcomposition") %>
                                   </h6>
                                 </div>
                                 <div class="text">
@@ -289,10 +278,7 @@
                                     <%=resultSet.getString("manufacturedby") %>
                                   </h6>
                                   <h6 class="price">
-                                      <span>
-                                        Rs.
-                                      </span>
-                                    <%=resultSet.getInt("price") %>
+                                    <%="Rs "+resultSet.getInt("price") %>
                                   </h6>
                                 </div>
                               </div>
