@@ -2,6 +2,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%page import="javax.servlet.http.HttpServletRequest"%>
 <%
         String url = "jdbc:oracle:thin:@localhost:1521:xe";
         String user = "system";
