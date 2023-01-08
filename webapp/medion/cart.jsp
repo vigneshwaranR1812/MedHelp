@@ -18,7 +18,7 @@
                    System.out.println("Inside if");
                    int cartid=Integer.parseInt(request.getParameter("cartid"));
                    int u=(Integer) session.getAttribute("userid");
-                   String squery="update cart set status='inactive' where carid="+cartid+" and userid="u;
+                   String squery="update cart set status='inactive' where carid="+cartid+" and userid="+u;
                    st.executeUpdate(squery);
                    response.sendRedirect("cart.jsp");
                  }
