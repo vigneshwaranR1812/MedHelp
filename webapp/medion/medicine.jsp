@@ -8,6 +8,7 @@
         String pass = "root";
         Connection con = null;
         Statement st=null;
+        System.out.println("Otha");
         try {
             DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
             con = DriverManager.getConnection(url, user,pass);
@@ -15,10 +16,9 @@
         }
         catch (Exception e) {
             System.out.println(e);
-            System.out.println("Cannot connect to database");
+            System.out.println("nakku2-1");
         }
         ResultSet resultSet = null;
-
 %>
 
 <!DOCTYPE html>
@@ -107,139 +107,38 @@
       </h2>
       <%
           try{
-boolean flag = true;
+                      String sql = "select medid,medname,medtype,medcomposition,manufacturedby,price,uses from medicine";
+                      resultSet = st.executeQuery(query);
 
-        String medName = request.getParameter("medName");
-        String medtype = request.getParameter("medtype");
-        String medComposition = request.getParameter("medComposition");
-        String manufacturedby = request.getParameter("manufacturedby");
-        String price = request.getParameter("price");
-        String lowerAge = request.getParameter("lowerAge");
-        String upperAge = request.getParameter("upperAge");
-        String uses = request.getParameter("uses");
+                      int count=0;
 
-        System.out.println("medName= "+medName+" medtype= "+medtype+" medComposition= "+medComposition+"manufacturedby="+manufacturedby+"price="+price+"lowerAge="+lowerAge+"upperAge="+upperAge+"uses="+uses);
-        String resultQuery = "select medid, medname, manufacturedby, medcomposition, price, uses, medtype from medicine where ";
+                      while(resultSet.next()){
+                        count++;
+                      }
 
-        if(medName.length()!=0){
-            if(flag==false){
-                resultQuery+=" and ";
-            }
-                                flag=false;
-                                resultQuery+="medname like '%"+medName+"%'";
-                            }
+                      resultSet = st.executeQuery(query);
 
-                            if(medComposition.length()!=0){
-                                if(flag==false){
-                                    resultQuery+=" and ";
-                                }
-                                flag=false;
-
-                                String[] composition = medComposition.split(",");
-                                int stringLength = composition.length;
-                                int count=0;
-                                for(String name : composition){
-                                    count++;
-                                    resultQuery+="medcomposition like '%"+name+"%'";
-                                    if(count < stringLength) {
-                                        resultQuery+=" or ";
-                                    }
-                                }
-                            }
-
-                            if(medtype.length()!=0){
-                                if(flag==false){
-                                    resultQuery+=" and ";
-                                }
-                                flag=false;
-
-                                resultQuery+="medtype like '%"+medtype+"%'";
-                            }
-
-                            if(manufacturedby.length()!=0) {
-                                if(flag==false){
-                                    resultQuery+=" and ";
-                                }
-                                flag=false;
-
-                                resultQuery+="manufacturedby like '%"+manufacturedby+"%'";
-                            }
-
-                            if(price.length()!=0) {
-                                if(flag==false){
-                                    resultQuery+=" and ";
-                                }
-                                flag=false;
-
-                                resultQuery+="price <= "+price;
-                            }
-
-                            if(lowerAge.length()!=0){
-                                if(flag==false){
-                                    resultQuery+=" and ";
-                                }
-                                flag=false;
-
-                                resultQuery+="lowerage >= "+lowerAge;
-                            }
-                            if(upperAge.length()!=0){
-                                if(flag==false){
-                                    resultQuery+=" and ";
-                                }
-                                flag=false;
-
-                                resultQuery+="upperage >= "+upperAge;
-                            }
-
-                            if(uses.length()!=0){
-                                if(flag==false){
-                                    resultQuery+=" and ";
-                                }
-                                flag=false;
-
-                                String[] composition = uses.split(",");
-                                int stringLength = composition.length;
-                                int count=0;
-                                for(String name : composition){
-                                    count++;
-                                    resultQuery+="uses like '%"+name+"%'";
-                                    if(count < stringLength) {
-                                        resultQuery+=" or ";
-                                    }
-                                }
-                            }
-
-                            resultSet = st.executeQuery(resultQuery);
-
-                            int count=0;
-
-                            while(resultSet.next()){
-                                count++;
-                            }
-
-                            resultSet = st.executeQuery(resultQuery);
-
-                      for(int j=0;j<count/5;j++){
+                      for(int j=0;j<count/4;j++){
       %>
-       <div style="display:flex;flex-direction:row;">
+       <div style="display:flex;flex-direction:row">
        <%
             int k=0;
-            while(k<5){
+            while(k<4){
                 if(resultSet.next()){
-                    System.out.println(resultSet.getString("medtype"));
+                System.out.println(resultSet.getString("medtype"));
        %>
             <div class="item" style="margin-right:40px">
                             <div class="box">
                               <div class="btn_container">
                                 <a href="">
-                                  Buy Now
+                                  Remove
                                 </a>
                               </div>
                               <div class="img-box">
-                              <% if(resultSet.getString("medtype").equals("Oil")){%>
-                                                                 <img src="images/oil.jpg" alt="">
-                                                                 <% } %>
-                                <% if(resultSet.getString("medtype").equals("Shampoo")){%>
+                                    <% if(resultSet.getString("medtype").equals("Oil")){%>
+                                    <img src="images/oil.jpg" alt="">
+                                    <% } %>
+                                   <% if(resultSet.getString("medtype").equals("Shampoo")){%>
                                      <img src="images/new_shampoo.jpg" alt="">
                                    <% } %>
                                    <% if(resultSet.getString("medtype").equals("Facewash")){%>
@@ -260,6 +159,8 @@ boolean flag = true;
                                    <% if(resultSet.getString("medtype").equals("Syrup")){%>
                                    <img src="images/syrup.jpg" alt="">
                                    <% } %>
+
+
                               </div>
                               <div class="detail-box">
                                 <div class="star_container">
@@ -308,12 +209,12 @@ boolean flag = true;
             </div>
           <%
           }
-          for(int j=(count/5)*5;j<((count/5)*5)+(count%5);j++){
+          for(int j=(count/4)*4;j<((count/4)*4)+(count%4);j++){
                 %>
             <div style="display:flex;flex-direction:row">
                  <%
                       int k=0;
-                      while(k<5){
+                      while(k<4){
                           if(resultSet.next()){
                           System.out.println(resultSet.getString("medtype"));
                  %>
@@ -321,11 +222,14 @@ boolean flag = true;
                       <div class="box">
                       <div class="btn_container">
                       <a href="">
-                        Buy Now
+                        Remove
                       </a>
                     </div>
                      <div class="img-box">
-                    <% if(resultSet.getString("medtype").equals("Shampoo")){%>
+                                <% if(resultSet.getString("medtype").equals("Oil")){%>
+                                <img src="images/oil.jpg" alt="">
+                                <% } %>
+                                <% if(resultSet.getString("medtype").equals("Shampoo")){%>
                                      <img src="images/new_shampoo.jpg" alt="">
                                    <% } %>
                                    <% if(resultSet.getString("medtype").equals("Facewash")){%>
@@ -333,9 +237,6 @@ boolean flag = true;
                                    <% } %>
                                    <% if(resultSet.getString("medtype").equals("Drops")){%>
                                    <img src="images/eyedrops.jpg" alt="">
-                                   <% } %>
-                                   <% if(resultSet.getString("medtype").equals("Oil")){%>
-                                   <img src="images/oil.jpg" alt="">
                                    <% } %>
                                    <% if(resultSet.getString("medtype").equals("Pills")){%>
                                    <img src="images/p-2.jpg" alt="">
@@ -399,7 +300,7 @@ boolean flag = true;
                         }
                         catch(Exception e){
                             System.out.println(e);
-                            System.out.println("Cannot retrieve data! SQL ERROR");
+                            System.out.println("nakku2-2");
                     }
                     %>
 
