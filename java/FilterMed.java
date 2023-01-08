@@ -28,7 +28,7 @@ public class FilterMed extends HttpServlet {
             session.setAttribute("lowerAge", lowerAge);
             session.setAttribute("upperAge", upperAge);
             session.setAttribute("uses", uses);
-            resp.sendRedirect( "../search.jsp?medName="+medName+"medtype="+medtype+"medComposition="+medComposition+"manufacturedby="+manufacturedby+"price="+price+"lowerAge="+lowerAge+"upperAge="+upperAge+"uses="+uses);
+            resp.sendRedirect( "../search.jsp?medName="+medName+"&medtype="+medtype+"&medComposition="+medComposition+"&manufacturedby="+manufacturedby+"&price="+price+"&lowerAge="+lowerAge+"&upperAge="+upperAge+"&uses="+uses);
         }
         catch (Exception e){
             System.out.println(e);
