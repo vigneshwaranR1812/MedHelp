@@ -16,9 +16,10 @@
         }
         catch (Exception e) {
             System.out.println(e);
-            System.out.println("nakku2");
+            System.out.println("nakku2-1");
         }
         ResultSet resultSet = null;
+        ResultSet resultSet1 = null;
 %>
 
 <!DOCTYPE html>
@@ -78,7 +79,7 @@
             <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-between">
 <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="..\javaproject\Login_v3\filter.html">Filter</a>
+                  <a class="nav-link" href="..\Login_v3\filter.html">Filter</a>
                 </li>
 
               </ul>
@@ -111,12 +112,20 @@
                       System.out.println(userid);
                       String sql = "select medname,medtype,medcomposition,manufacturedby,price,uses,carid from cart,medicine,userDetails where cart.medid=medicine.medid and cart.userid=userDetails.userid and userDetails.userid="+userid;
                       String query="select count(medname) as c from cart,medicine,userDetails where cart.medid=medicine.medid and cart.userid=userDetails.userid and userDetails.userid="+userid;
-                      ResultSet resultSet1 = st.executeQuery(query);
-                      resultSet = st.executeQuery(sql);
+                      resultSet1 = st.executeQuery(query);
+                      System.out.println("Query Executed");
 
                       int count=0;
-                      if(resultSet1.next())
-                            count=resultSet1.getInt("c");
+                      if(resultSet1.next()){
+                      count=resultSet1.getInt("c");
+                      System.out.println(resultSet1.getInt("c"));
+                      }
+
+                      resultSet = st.executeQuery(sql);
+                      System.out.println("Query Executed");
+                      if(resultSet.next()){
+                         System.out.println(resultSet1.getString("medname"));
+                      }
 
                       System.out.println(count);
 
@@ -186,9 +195,9 @@
             </div>
           <%
           }
-          for(int j=(count/4)*4;j<(count/4)*4+count%4;j++){
+          for(int j=(count/4)*4;j<((count/4)*4)+(count%4);j++){
                 %>
-                 <div style="display:flex;flex-direction:row">
+            <div style="display:flex;flex-direction:row">
                  <%
                       int k=0;
                       while(k<4){
@@ -200,29 +209,27 @@
                       <a href="">
                         Buy Now
                       </a>
-                                                </div>
-                                                <div class="img-box">
-                                                  <img src="images/p-6.jpg" alt="">
-                                                </div>
-                                                <div class="detail-box">
-                                                  <div class="star_container">
-                                                    <h6>
-                                                        <%=resultSet.getInt("medname") %>
-                                                    </h6>
-                                                  </div>
-                                                  <div class="text">
-                                                    <h6>
-                                                      <%=resultSet.getInt("medtype") %>
-                                                    </h6>
-                                                    <h6 class="price">
-                                                        <span>
-                                                          $
-                                                        </span>
-                                                      <%=resultSet.getInt("price") %>
-                                                    </h6>
-                                                  </div>
-                                                </div>
-                                <div class="detail-box">
+                    </div>
+                     <div class="img-box">
+                      <img src="images/p-6.jpg" alt="">
+                       </div>
+                      <div class="detail-box">
+                       <div class="star_container">
+                       <h6>
+                       <%=resultSet.getInt("medname") %>
+                        </h6>
+                        </div>
+                        <div class="text">
+                        <h6>
+                        <%=resultSet.getInt("medtype") %>
+                        </h6>
+                        <h6 class="price">
+                        <span>$</span>
+                        <%=resultSet.getInt("price") %>
+                        </h6>
+                       </div>
+                       </div>
+                       <div class="detail-box">
                                 <div class="star_container">
                                   <h6>
                                       <%=resultSet.getString("medcomposition") %>
@@ -240,11 +247,9 @@
                                   </h6>
                                 </div>
                               </div>
-                                              </div>
-                                            </div>
-
-
-                   <%
+                             </div>
+                            </div>
+                  <%
                       }
                       k++;
                    }
@@ -399,10 +404,5 @@
       }
     });
   </script>
-
-
-
-
-
 </body>
 </html>
