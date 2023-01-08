@@ -58,11 +58,13 @@ public class AddMed extends HttpServlet {
                 //RequestDispatcher rd = req.getRequestDispatcher("servlet2");
                 //rd.forward(req, resp);
                 System.out.println("Added");
+                resp.sendRedirect("addMed.html");
             }
             else{
 //                RequestDispatcher rd = req.getRequestDispatcher("servlet2");
 //                rd.forward(req, resp);
                 System.out.println("Error");
+                resp.sendRedirect("addMed.html");
             }
 
         }
