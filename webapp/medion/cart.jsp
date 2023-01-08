@@ -183,12 +183,7 @@
                                   <h6>
                                     <%=resultSet.getString("medtype") %>
                                   </h6>
-                                  <h6 class="price">
-                                      <span>
-                                        Rs.
-                                      </span>
-                                    <%=resultSet.getInt("price") %>
-                                  </h6>
+
                                 </div>
                               </div>
                                <div class="detail-box">
@@ -202,10 +197,7 @@
                                     <%=resultSet.getString("manufacturedby") %>
                                   </h6>
                                   <h6 class="price">
-                                      <span>
-                                        ₹
-                                      </span>
-                                    <%=resultSet.getInt("price") %>
+                                    <%="Rs "+resultSet.getInt("price") %>
                                   </h6>
                                 </div>
                               </div>
@@ -272,10 +264,7 @@
                         <h6>
                         <%=resultSet.getString("medtype") %>
                         </h6>
-                        <h6 class="price">
-                        <span>₹</span>
-                        <%=resultSet.getInt("price") %>
-                        </h6>
+
                        </div>
                        </div>
                        <div class="detail-box">
@@ -289,10 +278,7 @@
                                     <%=resultSet.getString("manufacturedby") %>
                                   </h6>
                                   <h6 class="price">
-                                      <span>
-                                        Rs.
-                                      </span>
-                                    <%=resultSet.getInt("price") %>
+                                    <%="Rs "+resultSet.getInt("price") %>
                                   </h6>
                                 </div>
                               </div>
