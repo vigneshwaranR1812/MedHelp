@@ -235,8 +235,11 @@ boolean flag = true;
                                 </a>
                               </div>
                               <div class="img-box">
+                              <% if(resultSet.getString("medtype").equals("OIL")){%>
+                                                                 <img src="images/oil.jpg" alt="">
+                                                                 <% } %>
                                 <% if(resultSet.getString("medtype").equals("Shampoo")){%>
-                                     <img src="images/shampoo.jpg" alt="">
+                                     <img src="images/new_shampoo.jpg" alt="">
                                    <% } %>
                                    <% if(resultSet.getString("medtype").equals("Facewash")){%>
                                    <img src="images/facewash.jpg" alt="">
@@ -287,7 +290,7 @@ boolean flag = true;
                                   </h6>
                                   <h6 class="price">
                                       <span>
-                                        $
+                                        ₹
                                       </span>
                                     <%=resultSet.getInt("price") %>
                                   </h6>
@@ -321,13 +324,16 @@ boolean flag = true;
                     </div>
                      <div class="img-box">
                     <% if(resultSet.getString("medtype").equals("Shampoo")){%>
-                                     <img src="images/shampoo.jpg" alt="">
+                                     <img src="images/new_shampoo.jpg" alt="">
                                    <% } %>
                                    <% if(resultSet.getString("medtype").equals("Facewash")){%>
                                    <img src="images/facewash.jpg" alt="">
                                    <% } %>
                                    <% if(resultSet.getString("medtype").equals("Drops")){%>
                                    <img src="images/eyedrops.jpg" alt="">
+                                   <% } %>
+                                   <% if(resultSet.getString("medtype").equals("OIL")){%>
+                                   <img src="images/oil.jpg" alt="">
                                    <% } %>
                                    <% if(resultSet.getString("medtype").equals("Pills")){%>
                                    <img src="images/p-2.jpg" alt="">
@@ -370,7 +376,7 @@ boolean flag = true;
                                   </h6>
                                   <h6 class="price">
                                       <span>
-                                        $
+                                        ₹
                                       </span>
                                     <%=resultSet.getInt("price") %>
                                   </h6>

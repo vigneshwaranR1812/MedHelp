@@ -146,8 +146,11 @@
                                 </a>
                               </div>
                               <div class="img-box">
+                              <% if(resultSet.getString("medtype").equals("OIL")){%>
+                                                                 <img src="images/oil.jpg" alt="">
+                                                                 <% } %>
                                    <% if(resultSet.getString("medtype").equals("Shampoo")){%>
-                                     <img src="images/shampoo.jpg" alt="">
+                                     <img src="images/new_shampoo.jpg" alt="">
                                    <% } %>
                                    <% if(resultSet.getString("medtype").equals("Facewash")){%>
                                    <img src="images/facewash.jpg" alt="">
@@ -182,7 +185,7 @@
                                   </h6>
                                   <h6 class="price">
                                       <span>
-                                        $
+                                        ₹
                                       </span>
                                     <%=resultSet.getInt("price") %>
                                   </h6>
@@ -233,8 +236,11 @@
                       </a>
                     </div>
                      <div class="img-box">
+                     <% if(resultSet.getString("medtype").equals("OIL")){%>
+                                                        <img src="images/oil.jpg" alt="">
+                                                        <% } %>
                                 <% if(resultSet.getString("medtype").equals("Shampoo")){%>
-                                     <img src="images/shampoo.jpg" alt="">
+                                     <img src="images/new_shampoo.jpg" alt="">
                                    <% } %>
                                    <% if(resultSet.getString("medtype").equals("Facewash")){%>
                                    <img src="images/facewash.jpg" alt="">
@@ -266,7 +272,7 @@
                         <%=resultSet.getString("medtype") %>
                         </h6>
                         <h6 class="price">
-                        <span>$</span>
+                        <span>₹</span>
                         <%=resultSet.getInt("price") %>
                         </h6>
                        </div>
