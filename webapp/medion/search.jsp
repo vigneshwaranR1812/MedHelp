@@ -105,8 +105,8 @@
         Medicine & Health
       </h2>
       <%
-          try{
-boolean flag = true;
+    try{
+        boolean flag = true;
         String medName = request.getParameter("medName");
         String medtype = request.getParameter("medtype");
         String medComposition = request.getParameter("medComposition");
@@ -115,8 +115,6 @@ boolean flag = true;
         String lowerAge = request.getParameter("lowerAge");
         String upperAge = request.getParameter("upperAge");
         String uses = request.getParameter("uses");
-        System.out.println("medName= "+medName+" medtype= "+medtype+" medComposition= "+medComposition+"manufacturedby="+manufacturedby+"price="+price+"lowerAge="+lowerAge+"upperAge="+upperAge+"uses="+uses);
-        String resultQuery = "select medid, medname, manufacturedby, medcomposition, price, uses, medtype from medicine where ";
 
         System.out.println("medName= "+medName+" medtype= "+medtype+" medComposition= "+medComposition+"manufacturedby="+manufacturedby+"price="+price+"lowerAge="+lowerAge+"upperAge="+upperAge+"uses="+uses);
         String resultQuery = "select medid, medname, manufacturedby, medcomposition, price, uses, medtype from medicine where ";
@@ -128,118 +126,98 @@ boolean flag = true;
 
            // resultSet = st.executeQuery("select medid,medname,medtype,medcomposition,manufacturedby,price,uses from medicine");
         }
-        else{
+        else
+        {
 
-        if(medName.length()!=0){
-            if(flag==false){
-                resultQuery+=" and ";
+            if(medName.length()!=0){
+                if(flag==false){
+                    resultQuery+=" and ";
+                }
+                flag=false;
+                resultQuery+="medname like '%"+medName+"%'";
             }
-                                flag=false;
-                                resultQuery+="medname like '%"+medName+"%'";
-                            }
 
-                            if(medComposition.length()!=0){
-                                if(flag==false){
-                                    resultQuery+=" and ";
-                                }
-                                flag=false;
+            if(medComposition.length()!=0){
+                if(flag==false){
+                    resultQuery+=" and ";
+                }
+                flag=false;
 
-                                String[] composition = medComposition.split(",");
-                                int stringLength = composition.length;
-                                int count=0;
-                                for(String name : composition){
-                                    count++;
-                                    resultQuery+="medcomposition like '%"+name+"%'";
-                                    if(count < stringLength) {
-                                        resultQuery+=" or ";
-                                    }
-                                }
-                            }
+                String[] composition = medComposition.split(",");
+                int stringLength = composition.length;
+                int count=0;
+                for(String name : composition){
+                    count++;
+                    resultQuery+="medcomposition like '%"+name+"%'";
+                    if(count < stringLength) {
+                        resultQuery+=" or ";
+                    }
+                }
+            }
 
-                            if(medtype.length()!=0){
-                                if(flag==false){
-                                    resultQuery+=" and ";
-                                }
-                                flag=false;
-                                resultQuery+="medtype like '%"+medtype+"%'";
-                            }
-
-                                resultQuery+="medtype like '%"+medtype+"%'";
-                            }
-
-                            if(manufacturedby.length()!=0) {
-                                if(flag==false){
-                                    resultQuery+=" and ";
-                                }
-                                flag=false;
-                                resultQuery+="manufacturedby like '%"+manufacturedby+"%'";
-                            }
-
-                                resultQuery+="manufacturedby like '%"+manufacturedby+"%'";
-                            }
-
-                            if(price.length()!=0) {
-                                if(flag==false){
-                                    resultQuery+=" and ";
-                                }
-                                flag=false;
-                                resultQuery+="price <= "+price;
-                            }
-
-                                resultQuery+="price <= "+price;
-                            }
-                            if(lowerAge.length()!=0){
-                                if(flag==false){
-                                    resultQuery+=" and ";
-                                }
-                                flag=false;
-                                resultQuery+="lowerage >= "+lowerAge;
-                            }
-                            if(upperAge.length()!=0){
-                                if(flag==false){
-                                    resultQuery+=" and ";
-                                }
-                                flag=false;
-                                resultQuery+="upperage >= "+upperAge;
-                            }
-
-                                resultQuery+="upperage >= "+upperAge;
-                            }
-
-                            if(uses.length()!=0){
-                                if(flag==false){
-                                    resultQuery+=" and ";
-                                }
-                                flag=false;
-                                String[] composition = uses.split(",");
-                                int stringLength = composition.length;
-                                int count=0;
-                                for(String name : composition){
-                                    count++;
-                                    resultQuery+="uses like '%"+name+"%'";
-                                    if(count < stringLength) {
-                                        resultQuery+=" or ";
-                                    }
-                                }
-                            }
-                            resultSet = st.executeQuery(resultQuery);
-                            int count=0;
-                            while(resultSet.next()){
-                                count++;
-                            }
-                            resultSet = st.executeQuery(resultQuery);
+            if(medtype.length()!=0){
+                if(flag==false){
+                    resultQuery+=" and ";
+                }
+                flag=false;
+                resultQuery+="medtype like '%"+medtype+"%'";
+            }
 
 
-                            resultSet = st.executeQuery(resultQuery);
+            if(manufacturedby.length()!=0) {
+                if(flag==false){
+                    resultQuery+=" and ";
+                }
+                flag=false;
+                resultQuery+="manufacturedby like '%"+manufacturedby+"%'";
+            }
+            if(price.length()!=0) {
+                if(flag==false){
+                    resultQuery+=" and ";
+                }
+                flag=false;
+                resultQuery+="price <= "+price;
+            }
+            if(lowerAge.length()!=0){
+                if(flag==false){
+                    resultQuery+=" and ";
+                }
+                flag=false;
+                resultQuery+="lowerage >= "+lowerAge;
+            }
+            if(upperAge.length()!=0){
+                if(flag==false){
+                    resultQuery+=" and ";
+                }
+                flag=false;
+                resultQuery+="upperage >= "+upperAge;
+            }
 
-                            int count=0;
+            if(uses.length()!=0){
+                if(flag==false){
+                    resultQuery+=" and ";
+                }
+                flag=false;
+                String[] composition = uses.split(",");
+                int stringLength = composition.length;
+                int count=0;
+                for(String name : composition){
+                    count++;
+                    resultQuery+="uses like '%"+name+"%'";
+                    if(count < stringLength) {
+                        resultQuery+=" or ";
+                    }
+                }
+            }
+        }
+        resultSet = st.executeQuery(resultQuery);
+        int count=0;
+        while(resultSet.next()){
+            count++;
+        }
 
-                            while(resultSet.next()){
-                                count++;
-                            }
-
-                            resultSet = st.executeQuery(resultQuery);
-                      for(int j=0;j<count/5;j++){
+        resultSet = st.executeQuery(resultQuery);
+        for(int j=0;j<count/5;j++){
       %>
        <div style="display:flex;flex-direction:row;">
        <%
@@ -327,9 +305,11 @@ boolean flag = true;
             <div style="display:flex;flex-direction:row">
                  <%
                       int k=0;
-                      while(k<5){
-                          if(resultSet.next()){
-                          System.out.println(resultSet.getString("medtype"));
+                      while(k<5)
+                      {
+                          if(resultSet.next())
+                          {
+                            System.out.println(resultSet.getString("medtype"));
                  %>
                       <div class="item" style="margin-right:60px">
                       <div class="box">
@@ -397,14 +377,13 @@ boolean flag = true;
                              </div>
                             </div>
                   <%
-                      }
-                      k++;
-                   }
+                            }
+                        k++;
+                    }
                    %>
                       </div>
                     <%
                     }
-                   }
 
                         System.out.println("After the Code");
                         }
