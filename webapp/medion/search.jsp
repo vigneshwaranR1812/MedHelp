@@ -271,12 +271,7 @@ boolean flag = true;
                                   <h6>
                                     <%=resultSet.getString("medtype") %>
                                   </h6>
-                                  <h6 class="price">
-                                      <span>
-                                        Rs
-                                      </span>
-                                    <%=resultSet.getInt("price") %>
-                                  </h6>
+
                                 </div>
                               </div>
                                <div class="detail-box">
@@ -293,7 +288,7 @@ boolean flag = true;
                                       <span>
                                         ₹
                                       </span>
-                                    <%=resultSet.getInt("price") %>
+                                    <%="Rs "+resultSet.getInt("price") %>
                                   </h6>
                                 </div>
                               </div>
@@ -360,10 +355,7 @@ boolean flag = true;
                         <h6>
                         <%=resultSet.getString("medtype") %>
                         </h6>
-                        <h6 class="price">
-                        <span>₹</span>
-                        <%=resultSet.getInt("price") %>
-                        </h6>
+
                        </div>
                        </div>
                        <div class="detail-box">
@@ -377,10 +369,7 @@ boolean flag = true;
                                     <%=resultSet.getString("manufacturedby") %>
                                   </h6>
                                   <h6 class="price">
-                                      <span>
-                                        Rs
-                                      </span>
-                                    <%=resultSet.getInt("price") %>
+                                    <%="Rs "+resultSet.getInt("price") %>
                                   </h6>
                                 </div>
                               </div>
