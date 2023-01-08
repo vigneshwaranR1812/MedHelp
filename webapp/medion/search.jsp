@@ -221,7 +221,7 @@ boolean flag = true;
 
                       for(int j=0;j<count/4;j++){
       %>
-       <div style="display:flex;flex-direction:row">
+       <div style="display:flex;flex-direction:row;">
        <%
             int k=0;
             while(k<4){
@@ -235,7 +235,7 @@ boolean flag = true;
                                 </a>
                               </div>
                               <div class="img-box">
-                              <% if(resultSet.getString("medtype").equals("OIL")){%>
+                              <% if(resultSet.getString("medtype").equals("Oil")){%>
                                                                  <img src="images/oil.jpg" alt="">
                                                                  <% } %>
                                 <% if(resultSet.getString("medtype").equals("Shampoo")){%>
@@ -332,7 +332,7 @@ boolean flag = true;
                                    <% if(resultSet.getString("medtype").equals("Drops")){%>
                                    <img src="images/eyedrops.jpg" alt="">
                                    <% } %>
-                                   <% if(resultSet.getString("medtype").equals("OIL")){%>
+                                   <% if(resultSet.getString("medtype").equals("Oil")){%>
                                    <img src="images/oil.jpg" alt="">
                                    <% } %>
                                    <% if(resultSet.getString("medtype").equals("Pills")){%>
