@@ -270,7 +270,7 @@
                        <div class="detail-box">
                                 <div class="star_container">
                                   <h6>
-                                      <%resultSet.getString("medcomposition") %>
+                                      <%=resultSet.getString("medcomposition") %>
                                   </h6>
                                 </div>
                                 <div class="text">
