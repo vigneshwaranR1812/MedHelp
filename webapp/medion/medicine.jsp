@@ -108,7 +108,7 @@
       <%
           try{
                       String sql = "select medid,medname,medtype,medcomposition,manufacturedby,price,uses from medicine";
-                      resultSet = st.executeQuery(query);
+                      resultSet = st.executeQuery(sql);
 
                       int count=0;
 
@@ -116,7 +116,7 @@
                         count++;
                       }
 
-                      resultSet = st.executeQuery(query);
+                      resultSet = st.executeQuery(sql);
 
                       for(int j=0;j<count/4;j++){
       %>
