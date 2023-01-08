@@ -123,13 +123,13 @@
 
                       resultSet = st.executeQuery(sql);
                       System.out.println("Query Executed");
-                      if(resultSet.next()){
-                         System.out.println(resultSet1.getString("medname"));
-                      }
+                      //if(resultSet.next()){
+                        // System.out.println(resultSet.getString("medname"));
+                      //}
 
                       System.out.println(count);
 
-                      for(int j=0;j<count/4;j++){
+                      for(int j=0;j<=count/4;j++){
       %>
        <div style="display:flex;flex-direction:row">
        <%
@@ -215,12 +215,12 @@
                       <div class="detail-box">
                        <div class="star_container">
                        <h6>
-                       <%=resultSet.getInt("medname") %>
+                       <%=resultSet.getString("medname") %>
                         </h6>
                         </div>
                         <div class="text">
                         <h6>
-                        <%=resultSet.getInt("medtype") %>
+                        <%=resultSet.getString("medtype") %>
                         </h6>
                         <h6 class="price">
                         <span>$</span>
