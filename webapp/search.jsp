@@ -18,7 +18,6 @@
             System.out.println("Cannot connect to database");
         }
         ResultSet resultSet = null;
-
 %>
 
 <!DOCTYPE html>
@@ -108,7 +107,6 @@
       <%
           try{
 boolean flag = true;
-
         String medName = request.getParameter("medName");
         String medtype = request.getParameter("medtype");
         String medComposition = request.getParameter("medComposition");
@@ -117,6 +115,8 @@ boolean flag = true;
         String lowerAge = request.getParameter("lowerAge");
         String upperAge = request.getParameter("upperAge");
         String uses = request.getParameter("uses");
+        System.out.println("medName= "+medName+" medtype= "+medtype+" medComposition= "+medComposition+"manufacturedby="+manufacturedby+"price="+price+"lowerAge="+lowerAge+"upperAge="+upperAge+"uses="+uses);
+        String resultQuery = "select medid, medname, manufacturedby, medcomposition, price, uses, medtype from medicine where ";
 
         System.out.println("medName= "+medName+" medtype= "+medtype+" medComposition= "+medComposition+"manufacturedby="+manufacturedby+"price="+price+"lowerAge="+lowerAge+"upperAge="+upperAge+"uses="+uses);
         String resultQuery = "select medid, medname, manufacturedby, medcomposition, price, uses, medtype from medicine where ";
@@ -161,6 +161,8 @@ boolean flag = true;
                                     resultQuery+=" and ";
                                 }
                                 flag=false;
+                                resultQuery+="medtype like '%"+medtype+"%'";
+                            }
 
                                 resultQuery+="medtype like '%"+medtype+"%'";
                             }
@@ -170,6 +172,8 @@ boolean flag = true;
                                     resultQuery+=" and ";
                                 }
                                 flag=false;
+                                resultQuery+="manufacturedby like '%"+manufacturedby+"%'";
+                            }
 
                                 resultQuery+="manufacturedby like '%"+manufacturedby+"%'";
                             }
@@ -179,16 +183,16 @@ boolean flag = true;
                                     resultQuery+=" and ";
                                 }
                                 flag=false;
-
                                 resultQuery+="price <= "+price;
                             }
 
+                                resultQuery+="price <= "+price;
+                            }
                             if(lowerAge.length()!=0){
                                 if(flag==false){
                                     resultQuery+=" and ";
                                 }
                                 flag=false;
-
                                 resultQuery+="lowerage >= "+lowerAge;
                             }
                             if(upperAge.length()!=0){
@@ -196,6 +200,8 @@ boolean flag = true;
                                     resultQuery+=" and ";
                                 }
                                 flag=false;
+                                resultQuery+="upperage >= "+upperAge;
+                            }
 
                                 resultQuery+="upperage >= "+upperAge;
                             }
@@ -205,7 +211,6 @@ boolean flag = true;
                                     resultQuery+=" and ";
                                 }
                                 flag=false;
-
                                 String[] composition = uses.split(",");
                                 int stringLength = composition.length;
                                 int count=0;
@@ -217,6 +222,13 @@ boolean flag = true;
                                     }
                                 }
                             }
+                            resultSet = st.executeQuery(resultQuery);
+                            int count=0;
+                            while(resultSet.next()){
+                                count++;
+                            }
+                            resultSet = st.executeQuery(resultQuery);
+
 
                             resultSet = st.executeQuery(resultQuery);
 
@@ -227,7 +239,6 @@ boolean flag = true;
                             }
 
                             resultSet = st.executeQuery(resultQuery);
-
                       for(int j=0;j<count/5;j++){
       %>
        <div style="display:flex;flex-direction:row;">
@@ -363,10 +374,6 @@ boolean flag = true;
                         <h6>
                         <%=resultSet.getString("medtype") %>
                         </h6>
-                         <h6 class="price">
-                        <span>₹</span>
-                        <%=resultSet.getInt("price") %>
-                        </h6>
                        </div>
                        </div>
                        <div class="detail-box">
@@ -398,6 +405,7 @@ boolean flag = true;
                     <%
                     }
                    }
+
                         System.out.println("After the Code");
                         }
                         catch(Exception e){
