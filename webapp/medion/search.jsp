@@ -2,6 +2,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="java.*"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,51 +48,51 @@
 
                     String resultQuery = "select medid, medname, manufacturedby, medcomposition, price, uses, medtype from medicine where ";
 
-                    if(medName!=null){
+                    if(medName.length()!=0){
                         if(flag==false){
                             resultQuery+=" and ";
                         }
                         flag=false;
-                        resultQuery+="medname like %"+medName+"%";
+                        resultQuery+="medname like '%"+medName+"%'";
                     }
 
-                    if(medComposition!=null){
+                    if(medComposition.length()!=0){
                         if(flag==false){
                             resultQuery+=" and ";
                         }
                         flag=false;
 
-                        String[] composition = medComposition.split(',');
-                        int stringLength = composition.length();
+                        String[] composition = medComposition.split(",");
+                        int stringLength = composition.length;
                         int count=0;
                         for(String name : composition){
                             count++;
-                            resultQuery+="medcomposition like %"+name+"%";
+                            resultQuery+="medcomposition like '%"+name+"%'";
                             if(count < stringLength) {
                                 resultQuery+=" or ";
                             }
                         }
                     }
 
-                    if(medtype!=null){
+                    if(medtype.length()!=0){
                         if(flag==false){
                             resultQuery+=" and ";
                         }
                         flag=false;
 
-                        resultQuery+="medtype like %"+medtype+"%";
+                        resultQuery+="medtype like '%"+medtype+"%'";
                     }
 
-                    if(manufacturedby!=null) {
+                    if(manufacturedby.length()!=0) {
                         if(flag==false){
                             resultQuery+=" and ";
                         }
                         flag=false;
 
-                        resultQuery+="medfacturedby like %"+manufacturedby+"%";
+                        resultQuery+="medfacturedby like '%"+manufacturedby+"%'";
                     }
 
-                    if(price!=null) {
+                    if(price.length()!=0) {
                         if(flag==false){
                             resultQuery+=" and ";
                         }
@@ -100,7 +101,7 @@
                         resultQuery+="price <= "+price;
                     }
 
-                    if(lowerAge!=null){
+                    if(lowerAge.length()!=0){
                         if(flag==false){
                             resultQuery+=" and ";
                         }
@@ -108,7 +109,7 @@
 
                         resultQuery+="lowerage >= "+lowerAge;
                     }
-                    if(upperAge!=null){
+                    if(upperAge.length()!=0){
                         if(flag==false){
                             resultQuery+=" and ";
                         }
@@ -117,22 +118,27 @@
                         resultQuery+="upperage >= "+upperAge;
                     }
 
-                    if(uses!=null){
+                    if(uses.length()!=0){
                         if(flag==false){
                             resultQuery+=" and ";
                         }
                         flag=false;
 
-                        String[] composition = uses.split(',');
-                        int stringLength = composition.length();
+                        String[] composition = uses.split(",");
+                        int stringLength = composition.length;
                         int count=0;
                         for(String name : composition){
-                        count++;
-                        resultQuery+=" uses like %"+name+"%";
-                        if(count < stringLength) {
-                            resultQuery+=" or ";
+                            count++;
+                            resultQuery+="uses like '%"+name+"%'";
+                            if(count < stringLength) {
+                                resultQuery+=" or ";
+                            }
                         }
                     }
+
+                   // resultQuery+=";";
+
+                    System.out.println("Result Query : " + resultQuery);
 
                     resultSet = st.executeQuery(resultQuery);
                     System.out.println("After querying ");
@@ -140,16 +146,17 @@
                     while(resultSet.next()){
 %>
                         <tr>
-                            <td><%=resultSet.getInt("medid")</td>
-                            <td><%=resultSet.getString("medname")</td>
-                            <td><%=resultSet.getString("manufacturedby")</td>
-                            <td><%=resultSet.getString("uses")</td>
-                            <td><%=resultSet.getInt("price")</td>
-                            <td><%=resultSet.getString("medcomposition")</td>
-                            <td><%=resultSet.getString("medtype")</td>
+                            <td><%=resultSet.getInt("medid") %></td>
+                            <td><%=resultSet.getString("medname") %></td>
+                            <td><%=resultSet.getString("manufacturedby") %></td>
+                            <td><%=resultSet.getString("uses") %></td>
+                            <td><%=resultSet.getInt("price") %></td>
+                            <td><%=resultSet.getString("medcomposition") %></td>
+                            <td><%=resultSet.getString("medtype") %></td>
                         </tr>
-                    }
+
 <%
+            }
         }
         catch (Exception e) {
             System.out.println(e);
