@@ -224,7 +224,7 @@ boolean flag = true;
        <div style="display:flex;flex-direction:row;">
        <%
             int k=0;
-            while(k<4){
+            while(k<5){
                 if(resultSet.next()){
                     System.out.println(resultSet.getString("medtype"));
        %>
@@ -313,7 +313,7 @@ boolean flag = true;
             <div style="display:flex;flex-direction:row">
                  <%
                       int k=0;
-                      while(k<4){
+                      while(k<5){
                           if(resultSet.next()){
                           System.out.println(resultSet.getString("medtype"));
                  %>
