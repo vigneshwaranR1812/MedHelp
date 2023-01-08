@@ -219,12 +219,12 @@ boolean flag = true;
 
                             resultSet = st.executeQuery(resultQuery);
 
-                      for(int j=0;j<count/4;j++){
+                      for(int j=0;j<count/5;j++){
       %>
        <div style="display:flex;flex-direction:row;">
        <%
             int k=0;
-            while(k<4){
+            while(k<5){
                 if(resultSet.next()){
                     System.out.println(resultSet.getString("medtype"));
        %>
@@ -308,12 +308,12 @@ boolean flag = true;
             </div>
           <%
           }
-          for(int j=(count/4)*4;j<((count/4)*4)+(count%4);j++){
+          for(int j=(count/5)*5;j<((count/5)*5)+(count%5);j++){
                 %>
             <div style="display:flex;flex-direction:row">
                  <%
                       int k=0;
-                      while(k<4){
+                      while(k<5){
                           if(resultSet.next()){
                           System.out.println(resultSet.getString("medtype"));
                  %>
