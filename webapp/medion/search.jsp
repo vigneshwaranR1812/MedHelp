@@ -3,6 +3,15 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 <%
+        boolean flag = true;
+        String medName = request.getParameter("medName");
+        String medtype = request.getParameter("medtype");
+        String medComposition = request.getParameter("medComposition");
+        String manufacturedby = request.getParameter("manufacturedby");
+        String price = request.getParameter("price");
+        String lowerAge = request.getParameter("lowerAge");
+        String upperAge = request.getParameter("upperAge");
+        String uses = request.getParameter("uses");
         String url = "jdbc:oracle:thin:@localhost:1521:xe";
         String user = "system";
         String pass = "root";
@@ -18,6 +27,34 @@
             System.out.println("Cannot connect to database");
         }
         ResultSet resultSet = null;
+
+        try{
+        int id = 1;
+                         if(request.getParameter("medId")!=null){
+                           System.out.println("Inside if");
+                           System.out.println(request.getParameter("medId"));
+                           int medId = Integer.parseInt(request.getParameter("medId"));
+                           int u=(Integer) session.getAttribute("userid");
+                           ResultSet rs=null;
+                                   try {
+                                       rs = st.executeQuery("SELECT carid FROM cart ORDER BY carid DESC");
+                                       if(rs.next()){
+                                           id=rs.getInt("carid")+1;
+                                       }
+                                   }
+                                   catch (Exception e) {
+                                       System.out.println(e);
+                                       System.out.println("One");
+                                   }
+                           String sqlQuery = "insert into cart values("+id+","+medId+","+u+",'active')";
+                           st.executeUpdate(sqlQuery);
+                           response.sendRedirect("search.jsp?medName="+medName+"&medtype="+medtype+"&medComposition="+medComposition+"&manufacturedby="+manufacturedby+"&price="+price+"&lowerAge="+lowerAge+"&upperAge="+upperAge+"&uses="+uses);
+
+                         }
+                    }
+                    catch(Exception e){
+                        System.out.println("Nakku 2.0");
+        }
 %>
 
 <!DOCTYPE html>
@@ -106,15 +143,6 @@
       </h2>
       <%
     try{
-        boolean flag = true;
-        String medName = request.getParameter("medName");
-        String medtype = request.getParameter("medtype");
-        String medComposition = request.getParameter("medComposition");
-        String manufacturedby = request.getParameter("manufacturedby");
-        String price = request.getParameter("price");
-        String lowerAge = request.getParameter("lowerAge");
-        String upperAge = request.getParameter("upperAge");
-        String uses = request.getParameter("uses");
 
         System.out.println("medName= "+medName+" medtype= "+medtype+" medComposition= "+medComposition+"manufacturedby="+manufacturedby+"price="+price+"lowerAge="+lowerAge+"upperAge="+upperAge+"uses="+uses);
         String resultQuery = "select medid, medname, manufacturedby, medcomposition, price, uses, medtype from medicine where ";
@@ -229,8 +257,8 @@
             <div class="item" style="margin-right:60px">
                             <div class="box">
                               <div class="btn_container">
-                                <a href="">
-                                  Buy Now
+                                <a href=<%="search.jsp?medId="+resultSet.getInt("medid")+"&medName="+medName+"&medtype="+medtype+"&medComposition="+medComposition+"&manufacturedby="+manufacturedby+"&price="+price+"&lowerAge="+lowerAge+"&upperAge="+upperAge+"&uses="+uses %>>
+                                  Add Now
                                 </a>
                               </div>
                               <div class="img-box">
@@ -314,8 +342,8 @@
                       <div class="item" style="margin-right:60px">
                       <div class="box">
                       <div class="btn_container">
-                      <a href="">
-                        Buy Now
+                      <a href=<%="search.jsp?medId="+resultSet.getInt("medid")+"&medName="+medName+"&medtype="+medtype+"&medComposition="+medComposition+"&manufacturedby="+manufacturedby+"&price="+price+"&lowerAge="+lowerAge+"&upperAge="+upperAge+"&uses="+uses %>>
+                        Add Now
                       </a>
                     </div>
                      <div class="img-box">
