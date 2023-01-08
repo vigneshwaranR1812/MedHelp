@@ -2,7 +2,6 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
-<%page import="javax.servlet.http.HttpServletRequest"%>
 <%
         String url = "jdbc:oracle:thin:@localhost:1521:xe";
         String user = "system";
@@ -17,11 +16,10 @@
         }
         catch (Exception e) {
             System.out.println(e);
-            System.out.println("nakku2");
-
+            System.out.println("nakku2-1");
         }
         ResultSet resultSet = null;
-
+        ResultSet resultSet1 = null;
 %>
 
 <!DOCTYPE html>
@@ -81,7 +79,7 @@
             <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-between">
 <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="..\javaproject\Login_v3\filter.html">Filter</a>
+                  <a class="nav-link" href="..\Login_v3\filter.html">Filter</a>
                 </li>
 
               </ul>
@@ -107,268 +105,166 @@
     <div class="health_carousel-container">
       <h2 class="text-uppercase">
         Medicine & Health
-
       </h2>
-      <div class="carousel-wrap layout_padding2">
-        <div class="owl-carousel">
-          <div class="item">
-            <div class="box">
-              <div class="btn_container">
-                <a href="">
-                  Add to cart
-                </a>
-              </div>
-              <div class="img-box">
-                <img src="images/oil.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star-o" aria-hidden="true"></i>
+      <%
+          try{
+                      int userid = (Integer) session.getAttribute("userid");
+                      System.out.println(userid);
+                      String sql = "select medname,medtype,medcomposition,manufacturedby,price,uses,carid from cart,medicine,userDetails where cart.medid=medicine.medid and cart.userid=userDetails.userid and userDetails.userid="+userid;
+                      String query="select count(medname) as c from cart,medicine,userDetails where cart.medid=medicine.medid and cart.userid=userDetails.userid and userDetails.userid="+userid;
+                      resultSet1 = st.executeQuery(query);
+                      System.out.println("Query Executed");
 
-                </div>
-                <div class="text">
-                  <h6>
-                    Health
-                  </h6>
-                  <h6 class="price">
-                    <span>
-                      $
-                    </span>
-                    30
-                  </h6>
-                </div>
-              </div>
-            </div>
-            <div class="box">
-              <div class="btn_container">
-                <a href="">
-                  Add to cart
-                </a>
-              </div>
-              <div class="img-box">
-                <img src="images/p-1.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star-o" aria-hidden="true"></i>
+                      int count=0;
+                      if(resultSet1.next()){
+                      count=resultSet1.getInt("c");
+                      System.out.println(resultSet1.getInt("c"));
+                      }
 
-                </div>
-                <div class="text">
-                  <h6>
-                    Health
-                  </h6>
-                  <h6 class="price">
-                    <span>
-                      $
-                    </span>
-                    30
-                  </h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="box">
-              <div class="btn_container">
-                <a href="">
-                  Add to cart
-                </a>
-              </div>
-              <div class="img-box">
-                <img src="images/syrup.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star-o" aria-hidden="true"></i>
+                      resultSet = st.executeQuery(sql);
+                      System.out.println("Query Executed");
+                      if(resultSet.next()){
+                         System.out.println(resultSet1.getString("medname"));
+                      }
 
-                </div>
-                <div class="text">
-                  <h6>
-                    Health
-                  </h6>
-                  <h6 class="price">
-                    <span>
-                      $
-                    </span>
-                    30
-                  </h6>
-                </div>
-              </div>
-            </div>
-            <div class="box">
-              <div class="btn_container">
-                <a href="">
-                  Add to cart
-                </a>
-              </div>
-              <div class="img-box">
-                <img src="images/new_shampoo.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star-o" aria-hidden="true"></i>
+                      System.out.println(count);
 
-                </div>
-                <div class="text">
-                  <h6>
-                    Health
-                  </h6>
-                  <h6 class="price">
-                    <span>
-                      $
-                    </span>
-                    30
-                  </h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="box">
-              <div class="btn_container">
-                <a href="">
-                  Add to cart
-                </a>
-              </div>
-              <div class="img-box">
-                <img src="images/cream.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star-o" aria-hidden="true"></i>
+                      for(int j=0;j<count/4;j++){
+      %>
+       <div style="display:flex;flex-direction:row">
+       <%
+            int k=0;
+            while(k<4){
+                if(resultSet.next()){
+       %>
+            <div class="item" style="margin-right:40px">
+                            <div class="box">
+                              <div class="btn_container">
+                                <a href="">
+                                  Buy Now
+                                </a>
+                              </div>
+                              <div class="img-box">
+                                <img src="images/p-6.jpg" alt="">
+                              </div>
+                              <div class="detail-box">
+                                <div class="star_container">
+                                  <h6>
+                                      <%=resultSet.getString("medname") %>
+                                  </h6>
+                                </div>
+                                <div class="text">
+                                  <h6>
+                                    <%=resultSet.getString("medtype") %>
+                                  </h6>
+                                  <h6 class="price">
+                                      <span>
+                                        $
+                                      </span>
+                                    <%=resultSet.getInt("price") %>
+                                  </h6>
+                                </div>
+                              </div>
+                               <div class="detail-box">
+                                <div class="star_container">
+                                  <h6>
+                                      <%=resultSet.getString("medcomposition") %>
+                                  </h6>
+                                </div>
+                                <div class="text">
+                                  <h6>
+                                    <%=resultSet.getString("manufacturedby") %>
+                                  </h6>
+                                  <h6 class="price">
+                                      <span>
+                                        $
+                                      </span>
+                                    <%=resultSet.getInt("price") %>
+                                  </h6>
+                                </div>
+                              </div>
 
-                </div>
-                <div class="text">
-                  <h6>
-                    Health
-                  </h6>
-                  <h6 class="price">
-                    <span>
-                      $
-                    </span>
-                    30
-                  </h6>
-                </div>
-              </div>
+                            </div>
+                          </div>
+         <%
+            }
+            k++;
+         }
+         %>
             </div>
-            <div class="box">
-              <div class="btn_container">
-                <a href="">
-                  Add to cart
-                </a>
-              </div>
-              <div class="img-box">
-                <img src="images/eyedrops.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star-o" aria-hidden="true"></i>
+          <%
+          }
+          for(int j=(count/4)*4;j<((count/4)*4)+(count%4);j++){
+                %>
+            <div style="display:flex;flex-direction:row">
+                 <%
+                      int k=0;
+                      while(k<4){
+                          if(resultSet.next()){
+                 %>
+                      <div class="item" style="margin-right:40px">
+                      <div class="box">
+                      <div class="btn_container">
+                      <a href="">
+                        Buy Now
+                      </a>
+                    </div>
+                     <div class="img-box">
+                      <img src="images/p-6.jpg" alt="">
+                       </div>
+                      <div class="detail-box">
+                       <div class="star_container">
+                       <h6>
+                       <%=resultSet.getInt("medname") %>
+                        </h6>
+                        </div>
+                        <div class="text">
+                        <h6>
+                        <%=resultSet.getInt("medtype") %>
+                        </h6>
+                        <h6 class="price">
+                        <span>$</span>
+                        <%=resultSet.getInt("price") %>
+                        </h6>
+                       </div>
+                       </div>
+                       <div class="detail-box">
+                                <div class="star_container">
+                                  <h6>
+                                      <%=resultSet.getString("medcomposition") %>
+                                  </h6>
+                                </div>
+                                <div class="text">
+                                  <h6>
+                                    <%=resultSet.getString("manufacturedby") %>
+                                  </h6>
+                                  <h6 class="price">
+                                      <span>
+                                        $
+                                      </span>
+                                    <%=resultSet.getInt("price") %>
+                                  </h6>
+                                </div>
+                              </div>
+                             </div>
+                            </div>
+                  <%
+                      }
+                      k++;
+                   }
+                   %>
+                      </div>
+                    <%
+                    }
 
-                </div>
-                <div class="text">
-                  <h6>
-                    Health
-                  </h6>
-                  <h6 class="price">
-                    <span>
-                      $
-                    </span>
-                    30
-                  </h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="box">
-              <div class="btn_container">
-                <a href="">
-                  Add to cart
-                </a>
-              </div>
-              <div class="img-box">
-                <img src="images/ointment.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star-o" aria-hidden="true"></i>
+                        System.out.println("After the Code");
+                        }
+                        catch(Exception e){
+                            System.out.println(e);
+                            System.out.println("nakku2-2");
+                    }
+                    %>
 
-                </div>
-                <div class="text">
-                  <h6>
-                    Health
-                  </h6>
-                  <h6 class="price">
-                    <span>
-                      $
-                    </span>
-                    30
-                  </h6>
-                </div>
-              </div>
-            </div>
-            <div class="box">
-              <div class="btn_container">
-                <a href="">
-                  Add to cart
-                </a>
-              </div>
-              <div class="img-box">
-                <img src="images/facewash.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star-o" aria-hidden="true"></i>
-
-                </div>
-                <div class="text">
-                  <h6>
-                    Health
-                  </h6>
-                  <h6 class="price">
-                    <span>
-                      $
-                    </span>
-                    30
-                  </h6>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
     <div class="d-flex justify-content-center">
       <a href="">
@@ -494,7 +390,6 @@
       nav: true,
       navText: [],
       autoplay: true,
-
       responsive: {
         0: {
           items: 1
@@ -508,39 +403,5 @@
       }
     });
   </script>
-
-
-
-<%
-    try{
-                int userid = (Integer) session.getAttribute("userid");
-                System.out.println(userid);
-                String sql = "select medname,medtype,medcomposition,manufacturedby,price,uses,carid from cart,medicine,userDetails where cart.medid=medicine.medid and cart.userid=userDetails.userid and userDetails.userid="+userid;
-                resultSet = st.executeQuery(sql);
-                System.out.println(resultSet);
-                System.out.println("Before the Code");
-                while(resultSet.next()){
-                System.out.println(resultSet.getInt("carid"));
-                System.out.println(resultSet.getString("medname"));
-                System.out.println(resultSet.getString("medtype"));
-%>
-    <tr>
-    <td><%=resultSet.getInt("carid") %></td>
-    <td><%=resultSet.getString("medname") %></td>
-    <td><%=resultSet.getString("medtype") %></td>
-    <td><%=resultSet.getString("medcomposition") %></td>
-    <td><%=resultSet.getString("manufacturedby") %></td>
-    <td><%=resultSet.getInt("price") %></td>
-    <td><%=resultSet.getString("uses") %></td>
-    </tr>
-<%
-             }
-             System.out.println("After the Code");
-           }
-           catch(Exception e){
-             System.out.println(e);
-             System.out.println("nakku2-2");
-           }
-%>
 </body>
 </html>
