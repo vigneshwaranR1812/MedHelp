@@ -121,6 +121,10 @@ boolean flag = true;
         System.out.println("medName= "+medName+" medtype= "+medtype+" medComposition= "+medComposition+"manufacturedby="+manufacturedby+"price="+price+"lowerAge="+lowerAge+"upperAge="+upperAge+"uses="+uses);
         String resultQuery = "select medid, medname, manufacturedby, medcomposition, price, uses, medtype from medicine where ";
 
+        if(medName.length()==0 && medComposition.length()==0 && medtype.length()==0 && manufacturedby.length()==0 && price.length()==0 && lowerAge.length()==0 && upperAge.length()==0 && uses.length()==0){
+            resultSet = st.executeQuery("select medid,medname,medtype,medcomposition,manufacturedby,price,uses from medicine");
+        }
+        else{
         if(medName.length()!=0){
             if(flag==false){
                 resultQuery+=" and ";
@@ -208,7 +212,7 @@ boolean flag = true;
                                     }
                                 }
                             }
-
+                    }
                             resultSet = st.executeQuery(resultQuery);
 
                             int count=0;
