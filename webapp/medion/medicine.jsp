@@ -172,12 +172,6 @@
                                   <h6>
                                     <%=resultSet.getString("medtype") %>
                                   </h6>
-                                  <h6 class="price">
-                                      <span>
-                                        Rs.
-                                      </span>
-                                    <%=resultSet.getInt("price") %>
-                                  </h6>
                                 </div>
                               </div>
                                <div class="detail-box">
@@ -260,11 +254,6 @@
                         <div class="text">
                         <h6>
                         <%=resultSet.getString("medtype") %>
-                        </h6>
-                        <h6 class="price">
-                        <span>Rs.</span>
-                        <%=resultSet.getInt("price") %>
-                        </h6>
                        </div>
                        </div>
                        <div class="detail-box">

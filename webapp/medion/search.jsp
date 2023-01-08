@@ -122,7 +122,10 @@ boolean flag = true;
         String resultQuery = "select medid, medname, manufacturedby, medcomposition, price, uses, medtype from medicine where ";
 
         if(medName.length()==0 && medComposition.length()==0 && medtype.length()==0 && manufacturedby.length()==0 && price.length()==0 && lowerAge.length()==0 && upperAge.length()==0 && uses.length()==0){
-            resultSet = st.executeQuery("select medid,medname,medtype,medcomposition,manufacturedby,price,uses from medicine");
+
+           response.sendRedirect("./medicine.jsp");
+
+           // resultSet = st.executeQuery("select medid,medname,medtype,medcomposition,manufacturedby,price,uses from medicine");
         }
         else{
         if(medName.length()!=0){
@@ -275,12 +278,6 @@ boolean flag = true;
                                   <h6>
                                     <%=resultSet.getString("medtype") %>
                                   </h6>
-                                  <h6 class="price">
-                                      <span>
-                                        Rs
-                                      </span>
-                                    <%=resultSet.getInt("price") %>
-                                  </h6>
                                 </div>
                               </div>
                                <div class="detail-box">
@@ -363,10 +360,6 @@ boolean flag = true;
                         <div class="text">
                         <h6>
                         <%=resultSet.getString("medtype") %>
-                        </h6>
-                        <h6 class="price">
-                        <span>Rs.</span>
-                        <%=resultSet.getInt("price") %>
                         </h6>
                        </div>
                        </div>
