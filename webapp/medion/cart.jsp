@@ -8,6 +8,7 @@
         String pass = "root";
         Connection con = null;
         Statement st=null;
+        System.out.println("Otha");
         try {
             DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
             con = DriverManager.getConnection(url, user,pass);
@@ -41,9 +42,15 @@
 <%
     try{
                 int userid = (Integer) session.getAttribute("userid");
-                String sql = "select medname,medtype,medcomposition,manufacturedby,price,uses,carid from cart,medicine,userDetails where cart.medid=medicine.medid and cart.userid=userDetails.userid and userDetails.userid="+userid;
+                System.out.println(userid);
+                String sql = "select medname,medtype,medcomposition,manufacturedby,price,uses,carid from cart,medicine,userDetails where cart.medid=medicine.medid and cart.userid=userDetails.userid and userDetails.userid=1";
                 resultSet = st.executeQuery(sql);
+                System.out.println(resultSet);
+                System.out.println("Before the Code");
                 while(resultSet.next()){
+                System.out.println(resultSet.getInt("carid"));
+                System.out.println(resultSet.getString("medname"));
+                System.out.println(resultSet.getString("medtype"));
 %>
     <tr>
     <td><%=resultSet.getInt("carid") %></td>
@@ -56,6 +63,7 @@
     </tr>
 <%
              }
+             System.out.println("After the Code");
            }
            catch(Exception e){
              System.out.println(e);
