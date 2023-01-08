@@ -56,7 +56,7 @@ public class Login extends HttpServlet {
 
                 }
                 else{
-                    resp.sendRedirect("filter.html");
+                    resp.sendRedirect("../cart.jsp");
                 }
             }
             else{

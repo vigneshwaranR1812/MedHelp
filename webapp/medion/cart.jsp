@@ -135,7 +135,8 @@
        <%
             int k=0;
             while(k<4){
-                if(resultSet.next()){
+                if(resultSet.next())
+                {System.out.println(resultSet.getString("medname"));
        %>
             <div class="item" style="margin-right:40px">
                             <div class="box">
