@@ -146,6 +146,7 @@
                                 </a>
                               </div>
                               <div class="img-box">
+
                                 <img src="images/p-6.jpg" alt="">
                               </div>
                               <div class="detail-box">
