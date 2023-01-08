@@ -118,6 +118,37 @@
                 </a>
               </div>
               <div class="img-box">
+                <img src="images/oil.jpg" alt="">
+              </div>
+              <div class="detail-box">
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star-o" aria-hidden="true"></i>
+
+                </div>
+                <div class="text">
+                  <h6>
+                    Health
+                  </h6>
+                  <h6 class="price">
+                    <span>
+                      $
+                    </span>
+                    30
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div class="box">
+              <div class="btn_container">
+                <a href="">
+                  Add to cart
+                </a>
+              </div>
+              <div class="img-box">
                 <img src="images/p-1.jpg" alt="">
               </div>
               <div class="detail-box">
@@ -142,6 +173,8 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="item">
             <div class="box">
               <div class="btn_container">
                 <a href="">
@@ -149,7 +182,38 @@
                 </a>
               </div>
               <div class="img-box">
-                <img src="images/p-5.jpg" alt="">
+                <img src="images/syrup.jpg" alt="">
+              </div>
+              <div class="detail-box">
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star-o" aria-hidden="true"></i>
+
+                </div>
+                <div class="text">
+                  <h6>
+                    Health
+                  </h6>
+                  <h6 class="price">
+                    <span>
+                      $
+                    </span>
+                    30
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div class="box">
+              <div class="btn_container">
+                <a href="">
+                  Add to cart
+                </a>
+              </div>
+              <div class="img-box">
+                <img src="images/new_shampoo.jpg" alt="">
               </div>
               <div class="detail-box">
                 <div class="star_container">
@@ -182,7 +246,7 @@
                 </a>
               </div>
               <div class="img-box">
-                <img src="images/p-2.jpg" alt="">
+                <img src="images/cream.jpg" alt="">
               </div>
               <div class="detail-box">
                 <div class="star_container">
@@ -213,71 +277,7 @@
                 </a>
               </div>
               <div class="img-box">
-                <img src="images/p-5.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star-o" aria-hidden="true"></i>
-
-                </div>
-                <div class="text">
-                  <h6>
-                    Health
-                  </h6>
-                  <h6 class="price">
-                    <span>
-                      $
-                    </span>
-                    30
-                  </h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="box">
-              <div class="btn_container">
-                <a href="">
-                  Add to cart
-                </a>
-              </div>
-              <div class="img-box">
-                <img src="images/p-3.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star-o" aria-hidden="true"></i>
-
-                </div>
-                <div class="text">
-                  <h6>
-                    Health
-                  </h6>
-                  <h6 class="price">
-                    <span>
-                      $
-                    </span>
-                    30
-                  </h6>
-                </div>
-              </div>
-            </div>
-            <div class="box">
-              <div class="btn_container">
-                <a href="">
-                  Add to cart
-                </a>
-              </div>
-              <div class="img-box">
-                <img src="images/p-5.jpg" alt="">
+                <img src="images/eyedrops.jpg" alt="">
               </div>
               <div class="detail-box">
                 <div class="star_container">
@@ -310,7 +310,7 @@
                 </a>
               </div>
               <div class="img-box">
-                <img src="images/p-4.jpg" alt="">
+                <img src="images/ointment.jpg" alt="">
               </div>
               <div class="detail-box">
                 <div class="star_container">
@@ -341,7 +341,7 @@
                 </a>
               </div>
               <div class="img-box">
-                <img src="images/p-5.jpg" alt="">
+                <img src="images/facewash.jpg" alt="">
               </div>
               <div class="detail-box">
                 <div class="star_container">
