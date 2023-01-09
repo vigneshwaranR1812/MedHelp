@@ -69,7 +69,7 @@ public class SignUp extends HttpServlet {
                     resp.sendRedirect("addMed.html");
                 }
                 else{
-                    resp.sendRedirect("filter.html");
+                    resp.sendRedirect("../medicine.jsp");
                 }
             }
             else{

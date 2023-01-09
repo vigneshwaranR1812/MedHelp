@@ -56,7 +56,7 @@ public class Login extends HttpServlet {
 
                 }
                 else{
-                    resp.sendRedirect("../cart.jsp");
+                    resp.sendRedirect("../medicine.jsp");
                 }
             }
             else{
