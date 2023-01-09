@@ -176,13 +176,13 @@
     <%
 
               String getAddQuery="select address from userdetails where userid="+userid;
-              resultSet=executeQuery(getAddQuery);
+              resultSet=st.executeQuery(getAddQuery);
               String arr[];
               if(resultSet.next()){
-                arr=resultSet.getString("address").split(" ");
+                arr=resultSet.getString("address").split(",");
               }
-
-              String queries="select did from delivery where count= (select min(count) from delivery where  area like '%"+arr[arr.length-2]+"%') and area like '%"+arr[arr.length-2]+"%'";
+                String areasss=arr[arr.length-2].trim();
+              String queries="select did from delivery where count= (select min(count) from delivery where  area like '%"+areasss+"%') and area like '%"+areasss+"%'";
               resultSet=st.executeQuery(queries);
               if(resultSet.next()){
                 int did=Integer.parseInt(resultSet.getInt("did"));
