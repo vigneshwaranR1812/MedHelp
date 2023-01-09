@@ -106,11 +106,17 @@
             <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-between">
 <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="Login_v3\filter.html">Filter</a>
+                  <a class="nav-link" href="Login_v3\medicine.jsp">See All</a>
                 </li>
 
               </ul>
-              <div class="login_btn-contanier ml-0 ml-lg-5">
+              <div class="login_btn-contanier ml-0 ml-lg-5" style="display:flex;flex-direction:row;">
+              <a href="cart.jsp">
+
+                                <span>
+                                  Cart
+                                </span>
+                              </a>
                 <a href="..\javaproject\index.html">
                   <img src="images/user.png" alt="">
                   <span>
@@ -165,7 +171,7 @@
     <td></td>
     <td></td>
     <td></td>
-    <td>Total price : Rs resultSet.getInt("price")</td>
+    <td>Total price : Rs <%=resultSet.getInt("price")%> </td>
     </tr>
 </table>
 
