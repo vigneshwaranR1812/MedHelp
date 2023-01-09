@@ -31,7 +31,7 @@ public class FilterMed extends HttpServlet {
             resp.sendRedirect( "../search.jsp?medName="+medName+"&medtype="+medtype+"&medComposition="+medComposition+"&manufacturedby="+manufacturedby+"&price="+price+"&lowerAge="+lowerAge+"&upperAge="+upperAge+"&uses="+uses);
         }
         catch (Exception e){
-            System.out.println(e);
+            resp.sendRedirect("../error%20page/index.jsp?ecode=400");
         }
     }
 }

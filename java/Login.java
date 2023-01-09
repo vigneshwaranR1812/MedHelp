@@ -29,7 +29,7 @@ public class Login extends HttpServlet {
                     pass);
             st= con.createStatement();
         } catch (Exception e) {
-            System.out.println(e);
+            resp.sendRedirect("../error%20page/index.jps?ecode=500");
         }
 
         //Inserting the Data to database
@@ -50,25 +50,20 @@ public class Login extends HttpServlet {
                 session.setAttribute("userid",id);
                 session.setAttribute("phoneNumber",phno);
                 session.setAttribute("address",address);
-                System.out.println("Nakku1");
                 if(name.equals("admin")){
                     resp.sendRedirect("addMed.html");
-
                 }
                 else{
                     resp.sendRedirect("../medicine.jsp");
                 }
             }
             else{
-//                RequestDispatcher rd = req.getRequestDispatcher("servlet2");
-//                rd.forward(req, resp);
-               resp.sendRedirect("../error%20page/index.jsp");
+               resp.sendRedirect("../error%20page/index.jsp?ecode=400");
             }
 
         }
         catch (Exception ex){
-            System.out.println(ex);
-            System.out.println("tro");
+            resp.sendRedirect("../error%20page/index.jsp?ecode=500");
         }
 
     }
