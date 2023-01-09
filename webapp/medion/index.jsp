@@ -2,14 +2,14 @@
 
 <%
 
-
-    if(session!=null && session.getAttribute("userid")!=null && !session.getAttribute("name").equals("admin")){
-        response.sendRedirect("medicine.jsp");
-
+    if(request.getAttribute("logout")!=null && request.getAttribute("logout").equals("true") ) {
+        session.invalidate();
+        response.sendRedirect("index.jsp");
     }
-session.invalidate();
-
-
+    else if(session!=null && session.getAttribute("userid")!=null && !session.getAttribute("name").equals("admin")){
+        response.sendRedirect("medicine.jsp");
+    }
+    session.invalidate();
 %>
 
 <!DOCTYPE html>
