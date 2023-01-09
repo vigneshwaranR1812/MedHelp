@@ -31,7 +31,7 @@ public class SignUp extends HttpServlet {
                     pass);
              st= con.createStatement();
         } catch (Exception e) {
-            System.out.println(e);
+            resp.sendRedirect("../error page/index.jsp?ecode=500");
         }
         //Fetching last person id
 
@@ -44,8 +44,7 @@ public class SignUp extends HttpServlet {
             }
         }
         catch (Exception e) {
-            System.out.println(e);
-            System.out.println("One");
+            resp.sendRedirect("../error page/index.jsp?ecode=500");
         }
         try{
             System.out.println(id);
@@ -73,15 +72,12 @@ public class SignUp extends HttpServlet {
                 }
             }
             else{
-//                RequestDispatcher rd = req.getRequestDispatcher("servlet2");
-//                rd.forward(req, resp);
-                System.out.println("Nakku2");
+                resp.sendRedirect("../error page/index.jsp?ecode=400");
             }
 
         }
         catch (Exception ex){
-            System.out.println(ex);
-            System.out.println("tro");
+            resp.sendRedirect("../error page/index.jsp?ecode=500");
         }
 
     }

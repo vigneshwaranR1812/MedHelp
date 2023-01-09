@@ -3,23 +3,12 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 <%
-        String url = "jdbc:oracle:thin:@localhost:1521:xe";
-        String user = "system";
-        String pass = "root";
-        Connection con = null;
-        Statement st=null;
-        System.out.println("Otha");
-        try {
-            DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-            con = DriverManager.getConnection(url, user,pass);
-            st= con.createStatement();
-        }
-        catch (Exception e) {
-            System.out.println(e);
-            System.out.println("nakku2-1");
-        }
-        ResultSet resultSet = null;
-        ResultSet resultSet1 = null;
+
+
+
+
+
+
 %>
 
 <!DOCTYPE html>
@@ -148,11 +137,16 @@
     <th>Price</th>
   </tr>
 <%
+        try {
+        String url = "jdbc:oracle:thin:@localhost:1521:xe";
+        String user = "system";
+        String pass = "root";
+        DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
+        Connection con = DriverManager.getConnection(url, user,pass);;
+        Statement st=con.createStatement();
         int userid = (Integer) session.getAttribute("userid");
         String sql = "select medname,medtype,manufacturedby,price from cart,medicine,userDetails where cart.medid=medicine.medid and cart.status='active' and cart.userid=userDetails.userid and userDetails.userid="+userid;
-        resultSet = st.executeQuery(sql);
-        System.out.println("Query Executed");
-        System.out.println(userid);
+        ResultSet resultSet = st.executeQuery(sql);
         int amount=0;
         while(resultSet.next()){
         amount+=resultSet.getInt("price");
@@ -166,6 +160,10 @@
   </tr>
  <%
         }
+            }
+            catch (Exception e) {
+                response.sendRedirect("error page/index.jsp?ecode=500");
+            }
  %>
     <tr>
     <td></td>

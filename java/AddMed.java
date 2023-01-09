@@ -34,7 +34,7 @@ public class AddMed extends HttpServlet {
                     pass);
             st= con.createStatement();
         } catch (Exception e) {
-            System.out.println(e);
+            resp.sendRedirect("../error page/index.jsp?ecode=500");
         }
         //Fetching last person id
         //Inserting the Data to database
@@ -46,8 +46,7 @@ public class AddMed extends HttpServlet {
             }
         }
         catch (Exception e) {
-            System.out.println(e);
-            System.out.println("One");
+            resp.sendRedirect("../error page/index.jsp?ecode=500");
         }
         try{
 
@@ -61,16 +60,12 @@ public class AddMed extends HttpServlet {
                 resp.sendRedirect("addMed.html");
             }
             else{
-//                RequestDispatcher rd = req.getRequestDispatcher("servlet2");
-//                rd.forward(req, resp);
-                System.out.println("Error");
-                resp.sendRedirect("addMed.html");
+             resp.sendRedirect("../error page/index.jsp?ecode=500");
             }
 
         }
         catch (Exception ex){
-            System.out.println(ex);
-            System.out.println("tro");
+            resp.sendRedirect("../error page/index.jsp?ecode=500");
         }
     }
 }

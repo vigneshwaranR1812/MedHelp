@@ -3,19 +3,18 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 <%
-        String url = "jdbc:oracle:thin:@localhost:1521:xe";
-        String user = "system";
-        String pass = "root";
-        Connection con = null;
-        Statement st=null;
-        System.out.println("Otha");
+
+
         try {
+            String url = "jdbc:oracle:thin:@localhost:1521:xe";
+            String user = "system";
+            String pass = "root";
             DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-            con = DriverManager.getConnection(url, user,pass);
-            st= con.createStatement();
+            Connection con = DriverManager.getConnection(url, user,pass);
+            Statement st= con.createStatement();
             try{
                  if(request.getParameter("cartid")!=null){
-                   System.out.println("Inside if");
+
                    int cartid=Integer.parseInt(request.getParameter("cartid"));
                    int u=(Integer) session.getAttribute("userid");
                    String squery="update cart set status='inactive' where carid="+cartid+" and userid="+u;
@@ -24,17 +23,10 @@
                  }
             }
             catch(Exception e){
-                System.out.println("Nakku 2.0");
+                response.sendRedirect("error page/index.jsp?ecode=500");
             }
 
 
-        }
-        catch (Exception e) {
-            System.out.println(e);
-            System.out.println("nakku2-1");
-        }
-        ResultSet resultSet = null;
-        ResultSet resultSet1 = null;
 %>
 
 <!DOCTYPE html>
@@ -122,27 +114,25 @@
         Medicine & Health
       </h2>
       <%
-          try{
+
                       int userid = (Integer) session.getAttribute("userid");
-                      System.out.println(userid);
+
                       String sql = "select medname,medtype,medcomposition,manufacturedby,price,uses,carid from cart,medicine,userDetails where cart.medid=medicine.medid and cart.status='active' and cart.userid=userDetails.userid and userDetails.userid="+userid;
                       String query="select count(medname) as c from cart,medicine,userDetails where cart.medid=medicine.medid and cart.userid=userDetails.userid and cart.status='active' and userDetails.userid="+userid;
-                      resultSet1 = st.executeQuery(query);
-                      System.out.println("Query Executed");
+                      ResultSet resultSet1 = st.executeQuery(query);
+
 
                       int count=0;
                       if(resultSet1.next()){
                       count=resultSet1.getInt("c");
-                      System.out.println(resultSet1.getInt("c"));
+
                       }
 
-                      resultSet = st.executeQuery(sql);
-                      System.out.println("Query Executed");
-                      if(resultSet.next()){
-                         System.out.println(resultSet.getString("medname"));
-                      }
+                      ResultSet resultSet = st.executeQuery(sql);
 
-                      System.out.println(count);
+
+
+
 
                       for(int j=0;j<count/5;j++){
       %>
@@ -151,7 +141,7 @@
             int k=0;
             while(k<5){
                 if(resultSet.next()){
-                System.out.println(resultSet.getString("medtype"));
+
        %>
             <div class="item" style="margin-right:60px">
                             <div class="box">
@@ -232,7 +222,7 @@
                       int k=0;
                       while(k<5){
                           if(resultSet.next()){
-                          System.out.println(resultSet.getString("medtype"));
+
                  %>
                       <div class="item" style="margin-right:60px">
                       <div class="box">
@@ -305,13 +295,10 @@
                       </div>
                     <%
                     }
-
-                        System.out.println("After the Code");
-                        }
-                        catch(Exception e){
-                            System.out.println(e);
-                            System.out.println("nakku2-2");
                     }
+                            catch (Exception e) {
+                                response.sendRedirect("error page/index.jsp?ecode=500");
+                            }
                     %>
 
     </div>
