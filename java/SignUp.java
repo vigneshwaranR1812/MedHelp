@@ -65,7 +65,7 @@ public class SignUp extends HttpServlet {
                 session.setAttribute("address",address);
                 System.out.println("Nakku1");
                 if(name.equals("admin")){
-                    resp.sendRedirect("addMed.html");
+                    resp.sendRedirect("../admin.html");
                 }
                 else{
                     resp.sendRedirect("../medicine.jsp");

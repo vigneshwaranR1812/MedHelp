@@ -160,10 +160,7 @@
   </tr>
  <%
         }
-            }
-            catch (Exception e) {
-                response.sendRedirect("error page/index.jsp?ecode=500");
-            }
+
  %>
     <tr>
     <td></td>
@@ -171,6 +168,12 @@
     <td></td>
     <td>Total price : Rs <%=amount%> </td>
     </tr>
+    <%
+          }
+                    catch (Exception e) {
+                        response.sendRedirect("error page/index.jsp?ecode=500");
+                    }
+    %>
 </table>
 
     </div>
