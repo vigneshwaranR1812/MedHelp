@@ -2,18 +2,10 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
-<%
 
-
-
-
-
-
-%>
 
 <!DOCTYPE html>
 <html>
-
 <head>
   <!-- Basic -->
   <meta charset="utf-8" />
@@ -115,8 +107,7 @@
               </div>
             </div>
           </div>
-
-        </nav>
+         </nav>
       </div>
     </header>
     <!-- end header section -->
@@ -144,7 +135,9 @@
         DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
         Connection con = DriverManager.getConnection(url, user,pass);;
         Statement st=con.createStatement();
+        System.out.println("Before all Query block 1");
         int userid = (Integer) session.getAttribute("userid");
+        System.out.println("Before all Query block");
         String sql = "select medname,medtype,manufacturedby,price from cart,medicine,userDetails where cart.medid=medicine.medid and cart.status='active' and cart.userid=userDetails.userid and userDetails.userid="+userid;
         ResultSet resultSet = st.executeQuery(sql);
         int amount=0;
@@ -172,15 +165,19 @@
 </table>
 
     </div>
+    <div class="d-flex justify-content-center">
+          <a href="confirm.html">
+            Confirm
+          </a>
+        </div>
+      </section>
 
     <%
 
               String getAddQuery="select address from userdetails where userid="+userid;
               ResultSet rs1=st.executeQuery(getAddQuery);
-              String arr[];
               if(rs1.next()){
-
-                arr=rs1.getString("address").split(",");
+                String arr[]=rs1.getString("address").split(",");
                 System.out.println(arr);
                 String areasss=arr[arr.length-2].trim();
                 String queries="select did from delivery where count= (select min(count) from delivery where  area like '%"+areasss+"%') and area like '%"+areasss+"%'";
@@ -193,11 +190,11 @@
                   if(rs.next()){
                   System.out.println(rs.getInt("age"));
                 %>
-                    <h1><%=rs.getInt("did")%></h1>
-                    <h1><%=rs.getString("name")%></h1>
-                    <h1><%=rs.getInt("age")%></h1>
-                    <h1><%=rs.getString("gender")%></h1>
-                    <h1><%=rs.getInt("phno")%></h1>
+                      <h1><%=rs.getInt("did")%></h1>
+                      <h1><%=rs.getString("name")%></h1>
+                      <h1><%=rs.getInt("age")%></h1>
+                      <h1><%=rs.getString("gender")%></h1>
+                      h1><%=rs.getInt("phno")%></h1>
                 <%
                     }
                   }
@@ -205,15 +202,11 @@
                  System.out.println("After try block");
                 }
               catch (Exception e) {
-                response.sendRedirect("error page/index.jsp?ecode=500");
+              System.out.println(e);
+               //response.sendRedirect("error page/index.jsp?ecode=500");
               }
         %>
-    <div class="d-flex justify-content-center">
-      <a href="confirm.html">
-        Confirm
-      </a>
-    </div>
-  </section>
+
 
   <!-- end health section -->
 
