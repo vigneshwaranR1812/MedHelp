@@ -46,4 +46,9 @@
         <servlet-name>AddMed</servlet-name>
         <url-pattern>/Login_v3/addMed</url-pattern>
     </servlet-mapping>
+
+<!--  Session timing-->
+  <session-config>
+    <session-timeout>120</session-timeout>
+  </session-config>
 </web-app>
