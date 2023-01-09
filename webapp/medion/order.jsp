@@ -117,7 +117,7 @@
                                   Cart
                                 </span>
                               </a>
-                <a href="..\javaproject\index.jsp">
+                <a href="index.jsp?logout=true">
                   <img src="images/user.png" alt="">
                   <span>
                     Logout
