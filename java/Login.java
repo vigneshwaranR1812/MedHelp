@@ -51,7 +51,7 @@ public class Login extends HttpServlet {
                 session.setAttribute("phoneNumber",phno);
                 session.setAttribute("address",address);
                 if(name.equals("admin")){
-                    resp.sendRedirect("admin.html");
+                    resp.sendRedirect("../admin.html");
                 }
                 else{
                     resp.sendRedirect("../medicine.jsp");
