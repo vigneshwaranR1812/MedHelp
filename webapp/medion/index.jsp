@@ -196,7 +196,7 @@
               Fast Delivery
             </h5>
             <p>
-              It is a long established fact that a reader will be distracted by
+              Reliable and speedy delivery.
             </p>
           </div>
         </div>
@@ -229,7 +229,7 @@
               license of government
             </h5>
             <p>
-              It is a long established fact that a reader will be distracted by
+              Licensed by the government in 2002
             </p>
           </div>
         </div>
@@ -318,10 +318,10 @@
           </div>
           <div class="detail-box">
             <h5>
-              support24/7
+              support 24/7
             </h5>
             <p>
-              It is a long established fact that a reader will be distracted by
+              Always here to clarify your queries.
             </p>
           </div>
         </div>
