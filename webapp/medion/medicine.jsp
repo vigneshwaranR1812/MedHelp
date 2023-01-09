@@ -19,6 +19,33 @@
             System.out.println("nakku2-1");
         }
         ResultSet resultSet = null;
+         try{
+                int id = 1;
+                                 if(request.getParameter("medId")!=null){
+                                   System.out.println("Inside if");
+                                   System.out.println(request.getParameter("medId"));
+                                   int medId = Integer.parseInt(request.getParameter("medId"));
+                                   int u=(Integer) session.getAttribute("userid");
+                                   ResultSet rs=null;
+                                           try {
+                                               rs = st.executeQuery("SELECT carid FROM cart ORDER BY carid DESC");
+                                               if(rs.next()){
+                                                   id=rs.getInt("carid")+1;
+                                               }
+                                           }
+                                           catch (Exception e) {
+                                               System.out.println(e);
+                                               System.out.println("One");
+                                           }
+                                   String sqlQuery = "insert into cart values("+id+","+medId+","+u+",'active')";
+                                   st.executeUpdate(sqlQuery);
+                                   response.sendRedirect("medicine.jsp");
+
+                                 }
+                            }
+                            catch(Exception e){
+                                System.out.println("Nakku 2.0");
+                }
 %>
 
 <!DOCTYPE html>
@@ -83,6 +110,12 @@
 
               </ul>
               <div class="login_btn-contanier ml-0 ml-lg-5">
+              <div class="login_btn-contanier ml-0 ml-lg-5" style="display: flex; flex-direction:row;">
+                <a href="cart.jsp" style="margin-right: 30px;">
+                                              <span>
+                                                Cart
+                                              </span>
+              </a>
                 <a href="..\javaproject\index.html">
                   <img src="images/user.png" alt="">
                   <span>
@@ -130,8 +163,8 @@
             <div class="item" style="margin-right:60px">
                             <div class="box">
                               <div class="btn_container">
-                                <a href="">
-                                  Remove
+                                <a href=<%="medicine.jsp?medId="+resultSet.getInt("medid")%>>
+                                  Add Now
                                 </a>
                               </div>
                               <div class="img-box">
@@ -215,8 +248,8 @@
                       <div class="item" style="margin-right:60px">
                       <div class="box">
                       <div class="btn_container">
-                      <a href="">
-                        Remove
+                      <a href=<%="medicine.jsp?medId="+resultSet.getInt("medid")%>>
+                        Add Now
                       </a>
                     </div>
                      <div class="img-box">
