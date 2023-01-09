@@ -95,7 +95,7 @@
             <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-between">
 <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="Login_v3\medicine.jsp">See All</a>
+                  <a class="nav-link" href="medicine.jsp">See All</a>
                 </li>
 
               </ul>
@@ -160,10 +160,7 @@
   </tr>
  <%
         }
-            }
-            catch (Exception e) {
-                response.sendRedirect("error page/index.jsp?ecode=500");
-            }
+
  %>
     <tr>
     <td></td>
@@ -171,6 +168,12 @@
     <td></td>
     <td>Total price : Rs <%=amount%> </td>
     </tr>
+    <%
+          }
+                    catch (Exception e) {
+                        response.sendRedirect("error page/index.jsp?ecode=500");
+                    }
+    %>
 </table>
 
     </div>
