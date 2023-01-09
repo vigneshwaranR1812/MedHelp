@@ -2,14 +2,12 @@
 
 <%
 
-    if(request.getParameter("logout")!=null && request.getParameter("logout").equals("true")){
-        session.invalidate();
-        response.sendRedirect("index.jsp");
-    }
-    else  if(session!=null && session.getAttribute("userid")!=null){
-        response.sendRedirect("medicine.jsp");
-    }
 
+    if(session!=null && session.getAttribute("userid")!=null && !session.getAttribute("name").equals("admin")){
+        response.sendRedirect("medicine.jsp");
+
+    }
+session.invalidate();
 
 
 %>
