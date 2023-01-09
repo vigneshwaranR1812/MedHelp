@@ -124,7 +124,7 @@
         String user = "system";
         String pass = "root";
         DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-        Connection con = DriverManager.getConnection(url, user,pass);;
+        Connection con = DriverManager.getConnection(url, user,pass);
         Statement st=con.createStatement();
         String sql = "select age, name, gender, phno, area from delivery";
         ResultSet resultSet = st.executeQuery(sql);
