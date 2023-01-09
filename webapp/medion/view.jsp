@@ -142,10 +142,6 @@
     <td><%=resultSet.getString("age")%></td>
     <td><%=resultSet.getString("gender")%></td>
     </tr>
-
-</table>
-
-
 <%
         }
     }
@@ -154,6 +150,9 @@
     }
 
 %>
+</table>
+
+
     </div>
     <div class="d-flex justify-content-center">
           <a href="admin.html">

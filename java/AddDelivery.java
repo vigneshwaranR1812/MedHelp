@@ -20,6 +20,7 @@ public class AddDelivery extends HttpServlet {
         int age = Integer.parseInt(req.getParameter("age"));
         long phno = Long.parseLong(req.getParameter("phno"));
         int id=1;
+        System.out.println(age+phno+name+gender+area);
         String url = "jdbc:oracle:thin:@localhost:1521:xe";
         String user = "system";
         String pass = "root";
@@ -32,6 +33,7 @@ public class AddDelivery extends HttpServlet {
                     pass);
             st= con.createStatement();
         } catch (Exception e) {
+            System.out.println("catch 1");
             resp.sendRedirect("../error page/index.jsp?ecode=500");
         }
 
@@ -43,11 +45,12 @@ public class AddDelivery extends HttpServlet {
             }
         }
         catch (Exception e) {
+            System.out.println("catch 2");
             resp.sendRedirect("../error page/index.jsp?ecode=500");
         }
         try{
 
-            String sql = "insert into delivery values("+id+"," + age + ",'" + name + "','" + gender + "'," + phno + ",'" + area + "')";
+            String sql = "insert into delivery values("+id+"," + age + ",'" + name + "','" + gender + "'," + phno + ",'" + area + "',0)";
 
             int m = st.executeUpdate(sql);
             if (m == 1) {
@@ -59,6 +62,7 @@ public class AddDelivery extends HttpServlet {
 
         }
         catch (Exception ex){
+            System.out.println("final catch");
             resp.sendRedirect("../error page/index.jsp?ecode=500");
         }
     }
