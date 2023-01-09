@@ -116,7 +116,7 @@
                                                 Cart
                                               </span>
               </a>
-                <a href="..\javaproject\index.jsp">
+                <a href="index.jsp?logout=true">
                   <img src="images/user.png" alt="">
                   <span>
                     Logout
@@ -326,11 +326,6 @@
                     }
                     %>
 
-    </div>
-    <div class="d-flex justify-content-center">
-      <a href="">
-        Order
-      </a>
     </div>
   </section>
 

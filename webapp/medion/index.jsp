@@ -1,10 +1,17 @@
 <%@page import="java.*"%>
 
 <%
-    if(session.getAttribute("userid")!=null){
-        System.out.println("sesion");
-        response.sendRedirect("medicine.jsp");
+
+    if(request.getParameter("logout")!=null && request.getParameter("logout").equals("true")){
+        session.invalidate();
+        response.sendRedirect("index.jsp");
     }
+    else  if(session!=null && session.getAttribute("userid")!=null){
+                         System.out.println("sesion");
+                         response.sendRedirect("medicine.jsp");
+    }
+
+
 
 %>
 
