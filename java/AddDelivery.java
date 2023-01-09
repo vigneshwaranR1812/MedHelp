@@ -18,7 +18,7 @@ public class AddDelivery extends HttpServlet {
         String gender = req.getParameter("gender");
         String name = req.getParameter("name");
         int age = Integer.parseInt(req.getParameter("age"));
-        int phno = Integer.parseInt(req.getParameter("phno"));
+        long phno = Long.parseLong(req.getParameter("phno"));
         int id=1;
         String url = "jdbc:oracle:thin:@localhost:1521:xe";
         String user = "system";
