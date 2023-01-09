@@ -11,7 +11,7 @@
                          System.out.println("sesion");
                          response.sendRedirect("medicine.jsp");
             }
-            if(session.getAttribute("name").equals("admin")){
+            else if(session.getAttribute("name").equals("admin") && session.getAttribute("userid")!=null){
                  response.sendRedirect("index.jsp");
             }
     }
