@@ -316,7 +316,7 @@
 
     </div>
     <div class="d-flex justify-content-center">
-      <a href="medicine.jsp">
+      <a href="order.jsp">
         Order
       </a>
     </div>
