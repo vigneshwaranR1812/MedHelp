@@ -180,15 +180,14 @@
               String arr[];
               if(resultSet.next()){
                 arr=resultSet.getString("address").split(",");
-              }
                 String areasss=arr[arr.length-2].trim();
-              String queries="select did from delivery where count= (select min(count) from delivery where  area like '%"+areasss+"%') and area like '%"+areasss+"%'";
-              resultSet=st.executeQuery(queries);
-              if(resultSet.next()){
-                int did=Integer.parseInt(resultSet.getInt("did"));
-                String str="select did,name,age,gender,phno from delivery where did="+did;
-                ResultSet rs=st.executeQuery(str);
-                if(rs.next()){
+                String queries="select did from delivery where count= (select min(count) from delivery where  area like '%"+areasss+"%') and area like '%"+areasss+"%'";
+                resultSet=st.executeQuery(queries);
+                if(resultSet.next()){
+                  int did=resultSet.getInt("did");
+                  String str="select did,name,age,gender,phno from delivery where did="+did;
+                  ResultSet rs=st.executeQuery(str);
+                  if(rs.next()){
                 %>
                     <h1><%=rs.getInt("did")%></h1>
                     <h1><%=rs.getString("name")%></h1>
@@ -196,9 +195,10 @@
                     <h1><%=rs.getString("gender")%></h1>
                     <h1><%=rs.getInt("phno")%></h1>
                 <%
+                    }
+                  }
+                 }
                 }
-              }
-              }
               catch (Exception e) {
                 response.sendRedirect("error page/index.jsp?ecode=500");
               }
