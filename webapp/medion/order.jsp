@@ -171,7 +171,7 @@
     <td></td>
     <td></td>
     <td></td>
-    <td>Total price : Rs <%=resultSet.getInt("price")%> </td>
+    <td>Total price : Rs <%=amount%> </td>
     </tr>
 </table>
 
