@@ -152,6 +152,11 @@
 
 %>
     </div>
+    <div class="d-flex justify-content-center">
+          <a href="admin.html">
+            BACK
+          </a>
+    </div>
   </section>
 
   <!-- end health section -->
