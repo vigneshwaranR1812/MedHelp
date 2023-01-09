@@ -6,9 +6,14 @@
         session.invalidate();
         response.sendRedirect("index.jsp");
     }
-    else  if(session!=null && session.getAttribute("userid")!=null){
+    else  if(session!=null){
+            if(session.getAttribute("userid")!=null){
                          System.out.println("sesion");
                          response.sendRedirect("medicine.jsp");
+            }
+            if(session.getAttribute("name").equals("admin")){
+                 response.sendRedirect("index.jsp");
+            }
     }
 
 
