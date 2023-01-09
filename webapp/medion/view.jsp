@@ -1,7 +1,3 @@
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
 
 <!DOCTYPE html>
 <html>
@@ -109,7 +105,7 @@
   <section class="health_section layout_padding">
     <div class="health_carousel-container">
       <h2 class="text-uppercase">
-        Your orders
+        Details
       </h2>
 
 <table id="customers">
