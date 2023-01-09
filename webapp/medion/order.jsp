@@ -175,19 +175,30 @@
 
     <%
 
-              String getAddQuery="Select address from userdetails where userid="+userid;
+              String getAddQuery="select address from userdetails where userid="+userid;
               resultSet=executeQuery(getAddQuery);
               String arr[];
               if(resultSet.next()){
                 arr=resultSet.getString("address").split(" ");
               }
 
+              String queries="select did from delivery where count= (select min(count) from delivery where  area like '%"+arr[arr.length-2]+"%') and area like '%"+arr[arr.length-2]+"%'";
+              resultSet=st.executeQuery(queries);
+              if(resultSet.next()){
+                int did=Integer.parseInt(resultSet.getInt("did"));
+                String str="select did,name,age,gender,phno from delivery where did="+did;
+                ResultSet rs=st.executeQuery(str);
+                if(rs.next()){
+                %>
 
 
+                <%
+                }
               }
-                        catch (Exception e) {
-                            response.sendRedirect("error page/index.jsp?ecode=500");
-                        }
+              }
+              catch (Exception e) {
+                response.sendRedirect("error page/index.jsp?ecode=500");
+              }
         %>
     <div class="d-flex justify-content-center">
       <a href="confirm.html">
