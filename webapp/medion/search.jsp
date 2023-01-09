@@ -23,13 +23,12 @@
             st= con.createStatement();
         }
         catch (Exception e) {
-            System.out.println(e);
-            System.out.println("Cannot connect to database");
+            response.sendRedirect("error%20page/index.jsp?ecode=500");
         }
         ResultSet resultSet = null;
 
         try{
-        int id = 1;
+            int id = 1;
                          if(request.getParameter("medId")!=null){
                            System.out.println("Inside if");
                            System.out.println(request.getParameter("medId"));
@@ -43,8 +42,7 @@
                                        }
                                    }
                                    catch (Exception e) {
-                                       System.out.println(e);
-                                       System.out.println("One");
+                                       response.sendRedirect("error%20page/index.jsp?ecode=500");
                                    }
                            String sqlQuery = "insert into cart values("+id+","+medId+","+u+",'active')";
                            st.executeUpdate(sqlQuery);
@@ -53,8 +51,8 @@
                          }
                     }
                     catch(Exception e){
-                        System.out.println("Nakku 2.0");
-        }
+                        response.sendRedirect("error%20page/index.jsp?ecode=500");
+                    }
 %>
 
 <!DOCTYPE html>
@@ -149,15 +147,12 @@
       <%
     try{
 
-        System.out.println("medName= "+medName+" medtype= "+medtype+" medComposition= "+medComposition+"manufacturedby="+manufacturedby+"price="+price+"lowerAge="+lowerAge+"upperAge="+upperAge+"uses="+uses);
         String resultQuery = "select medid, medname, manufacturedby, medcomposition, price, uses, medtype from medicine where ";
 
 
-        if(medName.length()==0 && medComposition.length()==0 && medtype.length()==0 && manufacturedby.length()==0 && price.length()==0 && lowerAge.length()==0 && upperAge.length()==0 && uses.length()==0){
+        if((medName==null || medComposition==null || medtype==null || manufacturedby==null || price==null || lowerAge==null || upperAge==null && uses==null) || (medName.length()==0 && medComposition.length()==0 && medtype.length()==0 && manufacturedby.length()==0 && price.length()==0 && lowerAge.length()==0 && upperAge.length()==0 && uses.length()==0)){
 
            response.sendRedirect("./medicine.jsp");
-
-           // resultSet = st.executeQuery("select medid,medname,medtype,medcomposition,manufacturedby,price,uses from medicine");
         }
         else
         {
@@ -257,7 +252,6 @@
             int k=0;
             while(k<5){
                 if(resultSet.next()){
-                    System.out.println(resultSet.getString("medtype"));
        %>
             <div class="item" style="margin-right:60px">
                             <div class="box">
@@ -316,7 +310,7 @@
                                   </h6>
                                   <h6 class="price">
                                       <span>
-                                        ₹
+                                        Rs.
                                       </span>
                                     <%=resultSet.getInt("price") %>
                                   </h6>
@@ -342,7 +336,6 @@
                       {
                           if(resultSet.next())
                           {
-                            System.out.println(resultSet.getString("medtype"));
                  %>
                       <div class="item" style="margin-right:60px">
                       <div class="box">
@@ -401,7 +394,7 @@
                                   </h6>
                                   <h6 class="price">
                                       <span>
-                                        Rs
+                                        Rs.
                                       </span>
                                     <%=resultSet.getInt("price") %>
                                   </h6>
@@ -417,12 +410,9 @@
                       </div>
                     <%
                     }
-
-                        System.out.println("After the Code");
-                        }
+                }
                         catch(Exception e){
-                            System.out.println(e);
-                            System.out.println("Cannot retrieve data! SQL ERROR");
+                        System.out.println(e);
                     }
                     %>
 
