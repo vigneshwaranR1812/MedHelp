@@ -8,15 +8,13 @@
         String pass = "root";
         Connection con = null;
         Statement st=null;
-        System.out.println("Otha");
         try {
             DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
             con = DriverManager.getConnection(url, user,pass);
             st= con.createStatement();
         }
         catch (Exception e) {
-            System.out.println(e);
-            System.out.println("nakku2-1");
+            response.sendRedirect("error%20page/index.jsp?ecode=500");
         }
         ResultSet resultSet = null;
          try{
@@ -34,8 +32,7 @@
                                                }
                                            }
                                            catch (Exception e) {
-                                               System.out.println(e);
-                                               System.out.println("One");
+                                               response.sendRedirect("error%20page/index.jsp?ecode=500");
                                            }
                                    String sqlQuery = "insert into cart values("+id+","+medId+","+u+",'active')";
                                    st.executeUpdate(sqlQuery);
@@ -44,7 +41,7 @@
                                  }
                             }
                             catch(Exception e){
-                                System.out.println("Nakku 2.0");
+                                response.sendRedirect("error%20page/index.jsp?ecode=500");
                 }
 %>
 
@@ -158,7 +155,6 @@
             int k=0;
             while(k<5){
                 if(resultSet.next()){
-                System.out.println(resultSet.getString("medtype"));
        %>
             <div class="item" style="margin-right:60px">
                             <div class="box">
@@ -243,7 +239,6 @@
                       int k=0;
                       while(k<5){
                           if(resultSet.next()){
-                          System.out.println(resultSet.getString("medtype"));
                  %>
                       <div class="item" style="margin-right:60px">
                       <div class="box">
@@ -317,12 +312,10 @@
                       </div>
                     <%
                     }
-
-                        System.out.println("After the Code");
                         }
                         catch(Exception e){
                             System.out.println(e);
-                            System.out.println("nakku2-2");
+
                     }
                     %>
 
