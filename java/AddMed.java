@@ -54,10 +54,7 @@ public class AddMed extends HttpServlet {
 
             int m = st.executeUpdate(sql);
             if (m == 1) {
-                //RequestDispatcher rd = req.getRequestDispatcher("servlet2");
-                //rd.forward(req, resp);
-                System.out.println("Added");
-                resp.sendRedirect("addMed.html");
+                resp.sendRedirect("../admin.html");
             }
             else{
              resp.sendRedirect("../error page/index.jsp?ecode=500");
