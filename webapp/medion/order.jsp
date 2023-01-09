@@ -190,8 +190,11 @@
                 ResultSet rs=st.executeQuery(str);
                 if(rs.next()){
                 %>
-
-
+                    <h1><%=rs.getInt("did")%></h1>
+                    <h1><%=rs.getString("name")%></h1>
+                    <h1><%=rs.getInt("age")%></h1>
+                    <h1><%=rs.getString("gender")%></h1>
+                    <h1><%=rs.getInt("phno")%></h1>
                 <%
                 }
               }
