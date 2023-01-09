@@ -190,12 +190,20 @@
                       <h1><%=rs.getString("name")%></h1>
                       <h1><%=rs.getInt("age")%></h1>
                       <h1><%=rs.getString("gender")%></h1>
-                      <h1><%=rs.getInt("phno")%></h1>
+                      <h1><%=rs.getString("phno")%></h1>
                 <%
                     }
-                    String sql2="update delivery set count=count+1 where did"+did;
-                    ResultSet rs3=st.executeQuery(sql2);
-                  }
+
+
+                  %>
+                  <div class="d-flex justify-content-center">
+                            <a href =<%="confirm.jsp?did="+did%> >
+                              Confirm
+                            </a>
+                          </div>
+                  <%
+
+                 }
                  }
                  System.out.println("After try block");
                 }
@@ -204,11 +212,7 @@
                //response.sendRedirect("error page/index.jsp?ecode=500");
               }
         %>
- <div class="d-flex justify-content-center">
-          <a href="confirm.html">
-            Confirm
-          </a>
-        </div>
+
       </section>
 
   <!-- end health section -->
