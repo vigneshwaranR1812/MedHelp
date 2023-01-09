@@ -111,7 +111,7 @@
 
               </ul>
               <div class="login_btn-contanier ml-0 ml-lg-5" style="display:flex;flex-direction:row;">
-              <a href="cart.jsp">
+              <a href="cart.jsp" style="margin-right:30px;">
 
                                 <span>
                                   Cart
