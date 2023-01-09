@@ -99,7 +99,7 @@
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="index.jsp">
             <img src="images/pill1.png" alt="">
             <span>
               Medhelp
@@ -124,7 +124,7 @@
                                   Cart
                                 </span>
                 </a>
-                <a href="..\javaproject\index.html">
+                <a href="..\javaproject\index.jsp">
                   <img src="images/user.png" alt="">
                   <span>
                     Logout
@@ -475,7 +475,7 @@
               </h4>
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="about.html"> About </a>

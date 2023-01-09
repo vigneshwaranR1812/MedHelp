@@ -48,7 +48,7 @@
 				<h1><%=eCode%></h1>
 				<h2><%=msg%></h2>
 			</div>
-			<a href="../index.html">Homepage</a>
+			<a href="../index.jsp">Homepage</a>
 		</div>
 	</div>
 

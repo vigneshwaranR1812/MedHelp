@@ -62,7 +62,7 @@ public class Login extends HttpServlet {
             else{
 //                RequestDispatcher rd = req.getRequestDispatcher("servlet2");
 //                rd.forward(req, resp);
-               resp.sendRedirect("../error%20page/index.html");
+               resp.sendRedirect("../error%20page/index.jsp");
             }
 
         }
