@@ -178,9 +178,10 @@
               ResultSet rs1=st.executeQuery(getAddQuery);
               if(rs1.next()){
                 String arr[]=rs1.getString("address").split(",");
-                System.out.println(arr);
+
                 String areasss=arr[arr.length-2].trim();
-                String queries="select did from delivery where count= (select min(count) from delivery where  area like '%"+areasss+"%') and area like '%"+areasss+"%'";
+                System.out.println(areasss);
+                String queries="select did from delivery where count = (select min(count) from delivery where  area like '%"+areasss+"%') and area like '%"+areasss+"%'";
                 ResultSet rs2=st.executeQuery(queries);
                 if(rs2.next()){
                   int did=rs2.getInt("did");
@@ -194,9 +195,11 @@
                       <h1><%=rs.getString("name")%></h1>
                       <h1><%=rs.getInt("age")%></h1>
                       <h1><%=rs.getString("gender")%></h1>
-                      h1><%=rs.getInt("phno")%></h1>
+                      <h1><%=rs.getInt("phno")%></h1>
                 <%
                     }
+                    String sql="update delivery set count=count+1 where did"+did;
+                    ResultSet rs3=st.executeQuery(sql);
                   }
                  }
                  System.out.println("After try block");
