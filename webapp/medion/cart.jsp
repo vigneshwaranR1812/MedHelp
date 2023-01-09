@@ -94,7 +94,7 @@
             <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-between">
 <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="Login_v3\filter.html">Filter</a>
+                  <a class="nav-link" href="medicine.jsp">See All</a>
                 </li>
 
               </ul>

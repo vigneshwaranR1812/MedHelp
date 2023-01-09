@@ -141,12 +141,31 @@
     <th>Manufacturer</th>
     <th>Price</th>
   </tr>
+<%
+        int userid = (Integer) session.getAttribute("userid");
+        String sql = "select medname,medtype,manufacturedby,price from cart,medicine,userDetails where cart.medid=medicine.medid and cart.status='active' and cart.userid=userDetails.userid and userDetails.userid="+userid;
+        resultSet = st.executeQuery(sql);
+        System.out.println("Query Executed");
+        System.out.println(userid);
+        int amount=0;
+        while(resultSet.next()){
+        amount+=resultSet.getInt("price");
 
+%>
   <tr>
+    <td><%=resultSet.getString("medname")%></td>
+    <td><%=resultSet.getString("medtype")%></td>
+    <td><%=resultSet.getString("manufacturedby")%></td>
+    <td><%=resultSet.getInt("price")%></td>
+  </tr>
+ <%
+        }
+ %>
+    <tr>
     <td></td>
     <td></td>
     <td></td>
-    <td>Total price : Rs</td>
+    <td>Total price : Rs resultSet.getInt("price")</td>
     </tr>
 </table>
 
