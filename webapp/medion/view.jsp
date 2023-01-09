@@ -117,15 +117,40 @@
     <th>Gender</th>
   </tr>
 
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+<%
+
+    try {
+        String url = "jdbc:oracle:thin:@localhost:1521:xe";
+        String user = "system";
+        String pass = "root";
+        DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
+        Connection con = DriverManager.getConnection(url, user,pass);;
+        Statement st=con.createStatement();
+        String sql = "select age, name, gender, phno, area from delivery";
+        ResultSet resultSet = st.executeQuery(sql);
+        while(resultSet.next()){
+
+%>
+
+    <tr>
+    <td><%=resultSet.getString("name")%></td>
+    <td><%=resultSet.getString("phno")%></td>
+    <td><%=resultSet.getString("area")%></td>
+    <td><%=resultSet.getString("age")%></td>
+    <td><%=resultSet.getString("gender")%></td>
     </tr>
 
 </table>
 
+
+<%
+        }
+    }
+    catch(Exception e){
+        response.sendRedirect("erro%20page/index.jsp?ecode=500");
+    }
+
+%>
     </div>
   </section>
 
