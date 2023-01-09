@@ -168,15 +168,27 @@
     <td></td>
     <td>Total price : Rs <%=amount%> </td>
     </tr>
-    <%
-          }
-                    catch (Exception e) {
-                        response.sendRedirect("error page/index.jsp?ecode=500");
-                    }
-    %>
+
 </table>
 
     </div>
+
+    <%
+
+              String getAddQuery="Select address from userdetails where userid="+userid;
+              resultSet=executeQuery(getAddQuery);
+              String arr[];
+              if(resultSet.next()){
+                arr=resultSet.getString("address").split(" ");
+              }
+
+
+
+              }
+                        catch (Exception e) {
+                            response.sendRedirect("error page/index.jsp?ecode=500");
+                        }
+        %>
     <div class="d-flex justify-content-center">
       <a href="confirm.html">
         Confirm

@@ -25,6 +25,11 @@
      <servlet-class>AddMed</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>AddDelivery</servlet-name>
+    <servlet-class>AddDelivery</servlet-class>
+  </servlet>
+
   <!--  Registration-->
   <servlet-mapping>
     <servlet-name>SignUp</servlet-name>
@@ -47,6 +52,10 @@
         <url-pattern>/Login_v3/addMed</url-pattern>
     </servlet-mapping>
 
+  <servlet-mapping>
+    <servlet-name>AddDelivery</servlet-name>
+    <url-pattern>/addDelivery</url-pattern>
+  </servlet-mapping>
 <!--  Session timing-->
   <session-config>
     <session-timeout>120</session-timeout>

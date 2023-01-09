@@ -16,6 +16,7 @@ public class AddDelivery extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String area = req.getParameter("area");
         String gender = req.getParameter("gender");
+        String name = req.getParameter("name");
         int age = Integer.parseInt(req.getParameter("age"));
         int phno = Integer.parseInt(req.getParameter("phno"));
         int id=1;
@@ -47,7 +48,7 @@ public class AddDelivery extends HttpServlet {
         }
         try{
 
-            String sql = "insert into delivery values("+id+"," + age + ",'" + gender + "'," + phno + ",'" + area + "')";
+            String sql = "insert into delivery values("+id+"," + age + ",'" + name + "','" + gender + "'," + phno + ",'" + area + "')";
 
             int m = st.executeUpdate(sql);
             if (m == 1) {
