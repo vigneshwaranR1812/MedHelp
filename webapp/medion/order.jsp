@@ -176,18 +176,22 @@
     <%
 
               String getAddQuery="select address from userdetails where userid="+userid;
-              resultSet=st.executeQuery(getAddQuery);
+              ResultSet rs1=st.executeQuery(getAddQuery);
               String arr[];
-              if(resultSet.next()){
-                arr=resultSet.getString("address").split(",");
+              if(rs1.next()){
+
+                arr=rs1.getString("address").split(",");
+                System.out.println(arr);
                 String areasss=arr[arr.length-2].trim();
                 String queries="select did from delivery where count= (select min(count) from delivery where  area like '%"+areasss+"%') and area like '%"+areasss+"%'";
-                resultSet=st.executeQuery(queries);
-                if(resultSet.next()){
-                  int did=resultSet.getInt("did");
+                ResultSet rs2=st.executeQuery(queries);
+                if(rs2.next()){
+                  int did=rs2.getInt("did");
+                  System.out.println(did);
                   String str="select did,name,age,gender,phno from delivery where did="+did;
                   ResultSet rs=st.executeQuery(str);
                   if(rs.next()){
+                  System.out.println(rs.getInt("age"));
                 %>
                     <h1><%=rs.getInt("did")%></h1>
                     <h1><%=rs.getString("name")%></h1>
@@ -198,6 +202,7 @@
                     }
                   }
                  }
+                 System.out.println("After try block");
                 }
               catch (Exception e) {
                 response.sendRedirect("error page/index.jsp?ecode=500");
