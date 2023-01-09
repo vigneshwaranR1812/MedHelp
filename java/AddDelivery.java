@@ -34,8 +34,7 @@ public class AddDelivery extends HttpServlet {
         } catch (Exception e) {
             resp.sendRedirect("../error page/index.jsp?ecode=500");
         }
-        //Fetching last person id
-        //Inserting the Data to database
+
         ResultSet rs=null;
         try {
             rs = st.executeQuery("SELECT did FROM delivery ORDER BY did DESC");
