@@ -54,7 +54,7 @@
 
   <servlet-mapping>
     <servlet-name>AddDelivery</servlet-name>
-    <url-pattern>/addDelivery</url-pattern>
+    <url-pattern>/Login_v3/addDelivery</url-pattern>
   </servlet-mapping>
 <!--  Session timing-->
   <session-config>
