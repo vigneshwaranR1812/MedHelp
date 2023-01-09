@@ -105,7 +105,7 @@
   <section class="health_section layout_padding">
     <div class="health_carousel-container">
       <h2 class="text-uppercase">
-        Your orders
+        Details
       </h2>
 
 <table id="customers">
@@ -124,7 +124,7 @@
         String user = "system";
         String pass = "root";
         DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-        Connection con = DriverManager.getConnection(url, user,pass);;
+        Connection con = DriverManager.getConnection(url, user,pass);
         Statement st=con.createStatement();
         String sql = "select age, name, gender, phno, area from delivery";
         ResultSet resultSet = st.executeQuery(sql);
@@ -151,6 +151,11 @@
     }
 
 %>
+    </div>
+    <div class="d-flex justify-content-center">
+          <a href="admin.html">
+            BACK
+          </a>
     </div>
   </section>
 
