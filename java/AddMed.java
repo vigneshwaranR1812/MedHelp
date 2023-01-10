@@ -17,6 +17,7 @@ public class AddMed extends HttpServlet {
         String medName = req.getParameter("medName");
         String medComposition = req.getParameter("medComposition");
         String manufacturedBy = req.getParameter("manufacturedBy");
+        String sym = req.getParameter("sym");
         int price = Integer.parseInt(req.getParameter("price"));
         int upper = Integer.parseInt(req.getParameter("upperAge"));
         int lower = Integer.parseInt(req.getParameter("lowerAge"));
@@ -50,7 +51,7 @@ public class AddMed extends HttpServlet {
         }
         try{
 
-            String sql = "insert into medicine values("+id+",'" + medName + "','" + medComposition + "','" + manufacturedBy + "','" + price + "'," + upper + "," + lower + ",'" + uses + "','"+medtype+"')";
+            String sql = "insert into medicine values("+id+",'" + medName + "','" + medComposition + "','" + manufacturedBy + "','" + price + "'," + upper + "," + lower + ",'" + uses + "','"+medtype+"','"+sym+"')";
 
             int m = st.executeUpdate(sql);
             if (m == 1) {

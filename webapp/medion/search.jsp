@@ -12,6 +12,7 @@
         String lowerAge = request.getParameter("lowerAge");
         String upperAge = request.getParameter("upperAge");
         String uses = request.getParameter("uses");
+        String sym = request.getParameter("sym");
         String url = "jdbc:oracle:thin:@localhost:1521:xe";
         String user = "system";
         String pass = "root";
@@ -46,7 +47,7 @@
                                    }
                            String sqlQuery = "insert into cart values("+id+","+medId+","+u+",'active')";
                            st.executeUpdate(sqlQuery);
-                           response.sendRedirect("search.jsp?medName="+medName+"&medtype="+medtype+"&medComposition="+medComposition+"&manufacturedby="+manufacturedby+"&price="+price+"&lowerAge="+lowerAge+"&upperAge="+upperAge+"&uses="+uses);
+                           response.sendRedirect("search.jsp?medName="+medName+"&medtype="+medtype+"&medComposition="+medComposition+"&manufacturedby="+manufacturedby+"&price="+price+"&lowerAge="+lowerAge+"&upperAge="+upperAge+"&uses="+uses+"&sym="+sym);
 
                          }
                     }
@@ -150,7 +151,7 @@
         String resultQuery = "select medid, medname, manufacturedby, medcomposition, price, uses, medtype from medicine where ";
 
 
-        if((medName==null || medComposition==null || medtype==null || manufacturedby==null || price==null || lowerAge==null || upperAge==null && uses==null) || (medName.length()==0 && medComposition.length()==0 && medtype.length()==0 && manufacturedby.length()==0 && price.length()==0 && lowerAge.length()==0 && upperAge.length()==0 && uses.length()==0)){
+        if((medName==null || medComposition==null || medtype==null || manufacturedby==null || price==null || lowerAge==null || upperAge==null || uses==null || sym==null) || (medName.length()==0 && medComposition.length()==0 && medtype.length()==0 && manufacturedby.length()==0 && price.length()==0 && lowerAge.length()==0 && upperAge.length()==0 && uses.length()==0 && sym.length()==0)){
 
            response.sendRedirect("./medicine.jsp");
         }
@@ -234,6 +235,22 @@
                     resultQuery+="uses like '%"+name+"%'";
                     if(count < stringLength) {
                         resultQuery+=" or ";
+                    }
+                }
+            }
+            if(sym.length()!=0){
+                            if(flag==false){
+                                resultQuery+=" and ";
+                            }
+                            flag=false;
+                            String[] composition = sym.split(",");
+                            int stringLength = composition.length;
+                            int count=0;
+                            for(String name : composition){
+                                count++;
+                                resultQuery+="sym like '%"+name+"%'";
+                                if(count < stringLength) {
+                                 resultQuery+=" and ";
                     }
                 }
             }
