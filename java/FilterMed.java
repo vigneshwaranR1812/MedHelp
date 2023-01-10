@@ -56,7 +56,7 @@ public class FilterMed extends HttpServlet {
                 try {
                     rs = st.executeQuery("SELECT id FROM sym ORDER BY id DESC");
                     if(rs.next()){
-                        id=rs.getInt("userid")+1;
+                        id=rs.getInt("id")+1;
                     }
                     System.out.println(id);
                 }
@@ -66,8 +66,10 @@ public class FilterMed extends HttpServlet {
                 }
                 try{
                     int userid=(Integer)session.getAttribute("userid");
-                    String sql="insert into sym values("+id+","+userid+",'"+ sym+ "')";
-                    st.executeUpdate(sql);
+                    System.out.println(id);
+                    String sql="insert into sym values("+id+","+userid+",'"+ sym+"')";
+                    int n=st.executeUpdate(sql);
+                    System.out.println(n);
                 }
                 catch (Exception e){
                     System.out.println(e);
