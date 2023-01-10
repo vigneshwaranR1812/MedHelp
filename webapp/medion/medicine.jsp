@@ -312,6 +312,12 @@
                       </div>
                     <%
                     }
+                    if(notFlag){
+                                        %>
+                                        <h1 style="text-align:center;font-size:40px">No Result Found. Please try again</h1>
+
+                                        <%
+                                        }
                         }
                         catch(Exception e){
                             System.out.println(e);

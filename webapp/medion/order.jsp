@@ -396,7 +396,7 @@
 
                                                             	<div class="product-details">
 
-                                                            	<h1>ops!!.Our services are not available in your current location.</h1>
+                                                            	<h1>oops!.Our services are not available in your current location.</h1>
                                                             	<span class="hint-star star">
                                                             		<i class="fa fa-star" aria-hidden="true"></i>
                                                             		<i class="fa fa-star" aria-hidden="true"></i>
@@ -423,6 +423,8 @@
                  }
                  }
                  System.out.println("After try block");
+
+
                 }
               catch (Exception e) {
               System.out.println(e);

@@ -260,8 +260,8 @@
         while(resultSet.next()){
             count++;
         }
-
         resultSet = st.executeQuery(resultQuery);
+        boolean notFlag=true;
         for(int j=0;j<count/5;j++){
       %>
        <div style="display:flex;flex-direction:row;">
@@ -269,6 +269,7 @@
             int k=0;
             while(k<5){
                 if(resultSet.next()){
+                notFlag=false;
        %>
             <div class="item" style="margin-right:60px">
                             <div class="box">
@@ -353,6 +354,7 @@
                       {
                           if(resultSet.next())
                           {
+                          notFlag=false;
                  %>
                       <div class="item" style="margin-right:60px">
                       <div class="box">
@@ -427,10 +429,18 @@
                       </div>
                     <%
                     }
+                    if(notFlag){
+                    %>
+                    <h1 style="text-align:center;font-size:40px">No result found. Please try again</h1>
+
+                    <%
+                    }
+
                 }
                         catch(Exception e){
                         System.out.println(e);
                     }
+
                     %>
 
     </div>

@@ -132,7 +132,7 @@
 
 
 
-
+        boolean notFlag=true;
 
                       for(int j=0;j<count/5;j++){
       %>
@@ -141,6 +141,7 @@
             int k=0;
             while(k<5){
                 if(resultSet.next()){
+                notFlag=false;
 
        %>
             <div class="item" style="margin-right:60px">
@@ -222,6 +223,7 @@
                       int k=0;
                       while(k<5){
                           if(resultSet.next()){
+                          notFlag=false;
 
                  %>
                       <div class="item" style="margin-right:60px">
@@ -293,20 +295,37 @@
                    }
                    %>
                       </div>
+
                     <%
                     }
+                    %>
+                    </div>
+                    <%
+                    if(notFlag){
+                                        %>
+                                        <h1 style="text-align:center;font-size:40px">No product in cart. Please try again</h1>
+
+                                        <%
+                                        }
+                    else{
+
+                    %>
+
+                        <div class="d-flex justify-content-center">
+                          <a href="order.jsp">
+                            Order
+                          </a>
+                        </div>
+
+
+                    <%
                     }
                             catch (Exception e) {
                                 response.sendRedirect("error page/index.jsp?ecode=500");
                             }
                     %>
 
-    </div>
-    <div class="d-flex justify-content-center">
-      <a href="order.jsp">
-        Order
-      </a>
-    </div>
+
   </section>
 
   <!-- end health section -->
