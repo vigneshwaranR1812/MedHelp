@@ -137,6 +137,7 @@
       </h2>
       <%
           try{
+                       boolean notFlag=true;
                       String sql = "select medid,medname,medtype,medcomposition,manufacturedby,price,uses from medicine";
                       resultSet = st.executeQuery(sql);
 
@@ -155,6 +156,7 @@
             int k=0;
             while(k<5){
                 if(resultSet.next()){
+                notFlag=false;
        %>
             <div class="item" style="margin-right:60px">
                             <div class="box">
@@ -239,6 +241,7 @@
                       int k=0;
                       while(k<5){
                           if(resultSet.next()){
+                          notFlag=false;
                  %>
                       <div class="item" style="margin-right:60px">
                       <div class="box">
