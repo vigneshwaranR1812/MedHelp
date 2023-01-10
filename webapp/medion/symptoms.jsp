@@ -296,12 +296,14 @@
         ResultSet resultSet = st.executeQuery(sql);
 
        System.out.println(userid);
-
+while(resultSet.next()){
 %>
   <tr>
     <td><%=resultSet.getString("symptoms")%></td>
   </tr>
-
+<%
+}
+%>
 </table>
 
     </div>
