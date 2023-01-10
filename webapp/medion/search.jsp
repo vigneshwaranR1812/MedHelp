@@ -115,6 +115,9 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="Login_v3\filter.html">Filter</a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="symptoms.jsp">Symp</a>
+                </li>
 
               </ul>
               <div class="login_btn-contanier ml-0 ml-lg-5" style="display: flex; flex-direction:row;">
