@@ -389,6 +389,36 @@
                   <%
 
                  }
+                 %>
+                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                                                            <div id="container2">
+
+                                                            	<div class="product-details">
+
+                                                            	<h1>Ooops!!.Our Services are available in your current location.</h1>
+                                                            	<span class="hint-star star">
+                                                            		<i class="fa fa-star" aria-hidden="true"></i>
+                                                            		<i class="fa fa-star" aria-hidden="true"></i>
+                                                            		<i class="fa fa-star" aria-hidden="true"></i>
+                                                            		<i class="fa fa-star" aria-hidden="true"></i>
+                                                            		<i class="fa fa-star" aria-hidden="true"></i>
+                                                            	</span>
+
+
+                                                            	<p class="information">Contact No: 9080706050</p>
+                                                            	<p class="information">Contact us if you have any further queries</p>
+                                                               </div>
+
+                                                            <div class="product-image">
+
+                                          <img src="images\trucknew.png">
+
+                                                            </div>
+
+                                                            </div>
+
+
+                 <%
                  }
                  System.out.println("After try block");
                 }
