@@ -34,7 +34,7 @@ public class AddDelivery extends HttpServlet {
             st= con.createStatement();
         } catch (Exception e) {
             System.out.println("catch 1");
-            resp.sendRedirect("../error page/index.jsp?ecode=500");
+            resp.sendRedirect("../error%20page/index.jsp?ecode=500");
         }
 
         ResultSet rs=null;
@@ -46,7 +46,7 @@ public class AddDelivery extends HttpServlet {
         }
         catch (Exception e) {
             System.out.println("catch 2");
-            resp.sendRedirect("../error page/index.jsp?ecode=500");
+            resp.sendRedirect("../error%20page/index.jsp?ecode=500");
         }
         try{
 
@@ -57,7 +57,7 @@ public class AddDelivery extends HttpServlet {
                 resp.sendRedirect("../admin.html");
             }
             else{
-                resp.sendRedirect("../error page/index.jsp?ecode=500");
+                resp.sendRedirect("../error%20page/index.jsp?ecode=500");
             }
 
         }

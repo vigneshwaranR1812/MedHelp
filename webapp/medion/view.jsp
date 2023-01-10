@@ -146,7 +146,7 @@
         }
     }
     catch(Exception e){
-        response.sendRedirect("erro%20page/index.jsp?ecode=500");
+        response.sendRedirect("error%20page/index.jsp?ecode=500");
     }
 
 %>
