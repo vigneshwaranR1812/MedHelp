@@ -9,7 +9,7 @@
     else if(session!=null && session.getAttribute("userid")!=null && !session.getAttribute("name").equals("admin")){
         response.sendRedirect("medicine.jsp");
     }
-    session.invalidate();
+    //session.invalidate();
 %>
 
 <!DOCTYPE html>
