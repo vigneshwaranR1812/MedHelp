@@ -248,7 +248,7 @@
                             int count=0;
                             for(String name : composition){
                                 count++;
-                                resultQuery+="sym like '%"+name+"%'";
+                                resultQuery+="symptom like '%"+name+"%'";
                                 if(count < stringLength) {
                                  resultQuery+=" and ";
                     }
