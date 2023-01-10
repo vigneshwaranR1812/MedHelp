@@ -147,7 +147,7 @@
       </h2>
       <%
     try{
-
+        boolean notFlag=true;
         String resultQuery = "select medid, medname, manufacturedby, medcomposition, price, uses, medtype from medicine where ";
 
 
@@ -261,7 +261,7 @@
             count++;
         }
         resultSet = st.executeQuery(resultQuery);
-        boolean notFlag=true;
+
         for(int j=0;j<count/5;j++){
       %>
        <div style="display:flex;flex-direction:row;">

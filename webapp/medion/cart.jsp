@@ -114,7 +114,7 @@
         Medicine & Health
       </h2>
       <%
-
+                      boolean notFlag=true;
                       int userid = (Integer) session.getAttribute("userid");
 
                       String sql = "select medname,medtype,medcomposition,manufacturedby,price,uses,carid from cart,medicine,userDetails where cart.medid=medicine.medid and cart.status='active' and cart.userid=userDetails.userid and userDetails.userid="+userid;
@@ -132,7 +132,7 @@
 
 
 
-        boolean notFlag=true;
+
 
                       for(int j=0;j<count/5;j++){
       %>
@@ -141,8 +141,7 @@
             int k=0;
             while(k<5){
                 if(resultSet.next()){
-                notFlag=false;
-
+                    notFlag=false;
        %>
             <div class="item" style="margin-right:60px">
                             <div class="box">
@@ -223,8 +222,7 @@
                       int k=0;
                       while(k<5){
                           if(resultSet.next()){
-                          notFlag=false;
-
+                            notFlag=false;
                  %>
                       <div class="item" style="margin-right:60px">
                       <div class="box">
@@ -295,35 +293,30 @@
                    }
                    %>
                       </div>
-
+                     </div>
                     <%
                     }
-                    %>
-                    </div>
-                    <%
                     if(notFlag){
                                         %>
                                         <h1 style="text-align:center;font-size:40px">No product in cart. Please try again</h1>
 
                                         <%
                                         }
-                    else{
-
-                    %>
-
-                        <div class="d-flex justify-content-center">
-                          <a href="order.jsp">
-                            Order
-                          </a>
-                        </div>
-
-
-                    <%
+                                        else{
+                                        %>
+                                        <div class="d-flex justify-content-center">
+                                              <a href="order.jsp">
+                                                Order
+                                              </a>
+                                            </div>
+                                        <%
+                                        }
                     }
                             catch (Exception e) {
                                 response.sendRedirect("error page/index.jsp?ecode=500");
                             }
                     %>
+
 
 
   </section>
