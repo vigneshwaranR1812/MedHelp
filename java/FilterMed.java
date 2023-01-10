@@ -58,6 +58,7 @@ public class FilterMed extends HttpServlet {
                     if(rs.next()){
                         id=rs.getInt("userid")+1;
                     }
+                    System.out.println(id);
                 }
                 catch (Exception e) {
                     //resp.sendRedirect("../error page/index.jsp?ecode=500");
@@ -65,7 +66,7 @@ public class FilterMed extends HttpServlet {
                 }
                 try{
                     int userid=(Integer)session.getAttribute("userid");
-                    String sql="insert into sym values("+id+","+userid+",'"+ sym+ "'";
+                    String sql="insert into sym values("+id+","+userid+",'"+ sym+ "')";
                     st.executeUpdate(sql);
                 }
                 catch (Exception e){
