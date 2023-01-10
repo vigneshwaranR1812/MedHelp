@@ -110,9 +110,7 @@
 
   <section class="health_section layout_padding">
     <div class="health_carousel-container">
-      <h2 class="text-uppercase">
-        Medicine & Health
-      </h2>
+
       <%
                       boolean notFlag=true;
                       int userid = (Integer) session.getAttribute("userid");
@@ -298,7 +296,7 @@
                     }
                     if(notFlag){
                                         %>
-                                        <h1 style="text-align:center;font-size:40px">No product in cart. Please try again</h1>
+                                        <h1 style="text-align:center;font-size:40px">No products in cart.</h1>
 
                                         <%
                                         }
