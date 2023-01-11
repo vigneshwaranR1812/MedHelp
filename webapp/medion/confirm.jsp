@@ -15,7 +15,7 @@ try {
                      int did = Integer.parseInt(request.getParameter("did"));
                      int u=(Integer)session.getAttribute("userid");
                      String sql2="update delivery set count=count+1 where did="+did;
-                     String sql3="update cart set status='inactive' where and userid="+u;
+                     String sql3="update cart set status='inactive' where userid="+u;
                                          Connect.st.executeUpdate(sql2);
                                          Connect.st.executeUpdate(sql3);
                                        response.sendRedirect("confirm.jsp");
