@@ -2,14 +2,24 @@
 
 <%
 
-    if(request.getAttribute("logout")!=null && request.getAttribute("logout").equals("true") ) {
+    if(request.getParameter("logout")!=null && request.getParameter("logout").equals("true") ) {
+     System.out.println(session.getAttribute("userid"));
         session.invalidate();
         response.sendRedirect("index.jsp");
     }
-    else if(session!=null && session.getAttribute("userid")!=null && !session.getAttribute("name").equals("admin")){
+ else if(request.getParameter("logout")==null && session!=null && session.getAttribute("userid")!=null && !session.getAttribute("name").equals("admin") ){
+        System.out.println("elkse if");
+        System.out.println(session.getAttribute("name"));
         response.sendRedirect("medicine.jsp");
+
     }
-    //session.invalidate();
+    else if(request.getParameter("logout")==null && session!=null && session.getAttribute("userid")!=null && session.getAttribute("name").equals("admin") ){
+            System.out.println("elkse if");
+            System.out.println(session.getAttribute("name"));
+            response.sendRedirect("admin.html");
+
+        }
+
 %>
 
 <!DOCTYPE html>

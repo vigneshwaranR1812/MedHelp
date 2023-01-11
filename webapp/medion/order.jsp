@@ -394,23 +394,15 @@
 
                                                             	<div class="product-details">
 
-                                                            	<h1>oops!.Our services are not available in your current location.</h1>
-                                                            	<span class="hint-star star">
-                                                            		<i class="fa fa-star" aria-hidden="true"></i>
-                                                            		<i class="fa fa-star" aria-hidden="true"></i>
-                                                            		<i class="fa fa-star" aria-hidden="true"></i>
-                                                            		<i class="fa fa-star" aria-hidden="true"></i>
-                                                            		<i class="fa fa-star" aria-hidden="true"></i>
-                                                            	</span>
-
-
+                                                            	<h1>Oops!</h1>
+                                                            	<h1>Our services are not available in your location.</h1>
                                                             	<p class="information">Contact No: 9080706050</p>
                                                             	<p class="information">Contact us if you have any further queries</p>
                                                                </div>
 
                                                             <div class="product-image">
 
-                                          <img src="images\trucknew.png">
+                                          <img src="images\sad face.png">
 
                                                             </div>
 
