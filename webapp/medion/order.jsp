@@ -393,16 +393,16 @@
                                                             <div id="container2">
 
                                                             	<div class="product-details">
+<h1>Oops!</h1>
 
-                                                            	<h1>Oops!</h1>
-                                                            	<h1>Our services are not available in your location.</h1>
-                                                            	<p class="information">Contact No: 9080706050</p>
+                                                            	<h4 >Our services are not available in your location.</h4>
+                                                            	<p class="information" >Contact No: 9080706050</p>
                                                             	<p class="information">Contact us if you have any further queries</p>
                                                                </div>
 
                                                             <div class="product-image">
 
-                                          <img src="images\sad face.png">
+                                          <img src="images\sad face.jpg">
 
                                                             </div>
 
