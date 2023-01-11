@@ -95,10 +95,10 @@ try {
             </ul>
 
             <div class="login_btn-contanier ml-0 ml-lg-5">
-              <a href="Login_v3\login.html">
+              <a href="index.jsp?logout=true">
                 <img src="images/user.png" alt="">
                 <span>
-                    Login
+                    Logout
                   </span>
               </a>
             </div>
