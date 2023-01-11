@@ -8,7 +8,7 @@ public class Connect {
 
     public static Connection con=null;
     public static Statement st=null;
-    Connect(){
+    public Connect(){
         String url = "jdbc:oracle:thin:@localhost:1521:xe";
         String user = "system";
         String pass = "root";
