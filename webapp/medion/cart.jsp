@@ -2,23 +2,19 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="DatabaseConnection.Connect" %>
 <%
 
 
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521:xe";
-            String user = "system";
-            String pass = "root";
-            DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-            Connection con = DriverManager.getConnection(url, user,pass);
-            Statement st= con.createStatement();
+             Connect c=new Connect();
             try{
                  if(request.getParameter("cartid")!=null){
 
                    int cartid=Integer.parseInt(request.getParameter("cartid"));
                    int u=(Integer) session.getAttribute("userid");
                    String squery="update cart set status='inactive' where carid="+cartid+" and userid="+u;
-                   st.executeUpdate(squery);
+                   Connect.st.executeUpdate(squery);
                    response.sendRedirect("cart.jsp");
                  }
             }
@@ -120,7 +116,7 @@
 
                       String sql = "select medname,medtype,medcomposition,manufacturedby,price,uses,carid from cart,medicine,userDetails where cart.medid=medicine.medid and cart.status='active' and cart.userid=userDetails.userid and userDetails.userid="+userid;
                       String query="select count(medname) as c from cart,medicine,userDetails where cart.medid=medicine.medid and cart.userid=userDetails.userid and cart.status='active' and userDetails.userid="+userid;
-                      ResultSet resultSet1 = st.executeQuery(query);
+                      ResultSet resultSet1 = Connect.st.executeQuery(query);
 
 
                       int count=0;
@@ -129,7 +125,7 @@
 
                       }
 
-                      ResultSet resultSet = st.executeQuery(sql);
+                      ResultSet resultSet = Connect.st.executeQuery(sql);
 
 
 
