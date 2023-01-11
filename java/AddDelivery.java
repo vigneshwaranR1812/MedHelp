@@ -1,4 +1,5 @@
 
+import DatabaseConnection.Connect;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,26 +21,12 @@ public class AddDelivery extends HttpServlet {
         int age = Integer.parseInt(req.getParameter("age"));
         long phno = Long.parseLong(req.getParameter("phno"));
         int id=1;
-        System.out.println(age+phno+name+gender+area);
-        String url = "jdbc:oracle:thin:@localhost:1521:xe";
-        String user = "system";
-        String pass = "root";
-        Connection con = null;
-        Statement st=null;
-        try {
-            DriverManager.registerDriver(
-                    new oracle.jdbc.OracleDriver());
-            con = DriverManager.getConnection(url, user,
-                    pass);
-            st= con.createStatement();
-        } catch (Exception e) {
-            System.out.println("catch 1");
-            resp.sendRedirect("../error%20page/index.jsp?ecode=500");
-        }
+
+
 
         ResultSet rs=null;
         try {
-            rs = st.executeQuery("SELECT did FROM delivery ORDER BY did DESC");
+            rs = Connect.st.executeQuery("SELECT did FROM delivery ORDER BY did DESC");
             if(rs.next()){
                 id=rs.getInt("did")+1;
             }
@@ -52,7 +39,7 @@ public class AddDelivery extends HttpServlet {
 
             String sql = "insert into delivery values("+id+"," + age + ",'" + name + "','" + gender + "'," + phno + ",'" + area + "',0)";
 
-            int m = st.executeUpdate(sql);
+            int m = Connect.st.executeUpdate(sql);
             if (m == 1) {
                 resp.sendRedirect("../admin.html");
             }

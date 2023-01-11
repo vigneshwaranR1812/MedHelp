@@ -19,7 +19,7 @@ public class Connect {
                     pass);
             st= con.createStatement();
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Error da otha");
         }
 
     }

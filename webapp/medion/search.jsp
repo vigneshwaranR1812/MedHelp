@@ -2,6 +2,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="DatabaseConnection.Connect" %>
 <%
         boolean flag = true;
         String medName = request.getParameter("medName");
@@ -13,19 +14,6 @@
         String upperAge = request.getParameter("upperAge");
         String uses = request.getParameter("uses");
         String sym = request.getParameter("sym");
-        String url = "jdbc:oracle:thin:@localhost:1521:xe";
-        String user = "system";
-        String pass = "root";
-        Connection con = null;
-        Statement st=null;
-        try {
-            DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-            con = DriverManager.getConnection(url, user,pass);
-            st= con.createStatement();
-        }
-        catch (Exception e) {
-            response.sendRedirect("error%20page/index.jsp?ecode=500");
-        }
         ResultSet resultSet = null;
 
         try{
@@ -37,7 +25,7 @@
                            int u=(Integer) session.getAttribute("userid");
                            ResultSet rs=null;
                                    try {
-                                       rs = st.executeQuery("SELECT carid FROM cart ORDER BY carid DESC");
+                                       rs = Connect.st.executeQuery("SELECT carid FROM cart ORDER BY carid DESC");
                                        if(rs.next()){
                                            id=rs.getInt("carid")+1;
                                        }
@@ -46,7 +34,7 @@
                                        response.sendRedirect("error%20page/index.jsp?ecode=500");
                                    }
                            String sqlQuery = "insert into cart values("+id+","+medId+","+u+",'active')";
-                           st.executeUpdate(sqlQuery);
+                           Connect.st.executeUpdate(sqlQuery);
                            response.sendRedirect("search.jsp?medName="+medName+"&medtype="+medtype+"&medComposition="+medComposition+"&manufacturedby="+manufacturedby+"&price="+price+"&lowerAge="+lowerAge+"&upperAge="+upperAge+"&uses="+uses+"&sym="+sym);
 
                          }
@@ -258,12 +246,12 @@
                 }
             }
         }
-        resultSet = st.executeQuery(resultQuery);
+        resultSet = Connect.st.executeQuery(resultQuery);
         int count=0;
         while(resultSet.next()){
             count++;
         }
-        resultSet = st.executeQuery(resultQuery);
+        resultSet = Connect.st.executeQuery(resultQuery);
 
         for(int j=0;j<count/5;j++){
       %>

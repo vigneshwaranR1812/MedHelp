@@ -1,3 +1,4 @@
+import DatabaseConnection.Connect;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -36,25 +37,11 @@ public class FilterMed extends HttpServlet {
             session.setAttribute("uses", uses);
 
             if(sym!=null && sym.length()!=0){
-                String url = "jdbc:oracle:thin:@localhost:1521:xe";
-                String user = "system";
-                String pass = "root";
-                Connection con = null;
-                Statement st=null;
-                try {
-                    DriverManager.registerDriver(
-                            new oracle.jdbc.OracleDriver());
-                    con = DriverManager.getConnection(url, user,
-                            pass);
-                    st= con.createStatement();
-                } catch (Exception e) {
-                    //resp.sendRedirect("../error page/index.jsp?ecode=500");
-                    System.out.println(e);
-                }
+
                 int id=1;
                 ResultSet rs=null;
                 try {
-                    rs = st.executeQuery("SELECT id FROM sym ORDER BY id DESC");
+                    rs = Connect.st.executeQuery("SELECT id FROM sym ORDER BY id DESC");
                     if(rs.next()){
                         id=rs.getInt("id")+1;
                     }
@@ -68,7 +55,7 @@ public class FilterMed extends HttpServlet {
                     int userid=(Integer)session.getAttribute("userid");
                     System.out.println(id);
                     String sql="insert into sym values("+id+","+userid+",'"+ sym+"')";
-                    int n=st.executeUpdate(sql);
+                    int n=Connect.st.executeUpdate(sql);
                     System.out.println(n);
                 }
                 catch (Exception e){

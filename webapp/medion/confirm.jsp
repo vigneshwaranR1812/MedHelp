@@ -2,15 +2,11 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="DatabaseConnection.Connect" %>
 <%
 
 try {
-        String url = "jdbc:oracle:thin:@localhost:1521:xe";
-        String user = "system";
-        String pass = "root";
-        DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-        Connection con = DriverManager.getConnection(url, user,pass);;
-        Statement st=con.createStatement();
+
 
         if(request.getParameter("did")!=null && request.getParameter("did").length()==0 ){
         response.sendRedirect("order.jsp");
@@ -18,7 +14,7 @@ try {
         else if(request.getParameter("did")!=null){
                      int did = Integer.parseInt(request.getParameter("did"));
                      String sql2="update delivery set count=count+1 where did="+did;
-                                         st.executeUpdate(sql2);
+                                         Connect.st.executeUpdate(sql2);
                                        response.sendRedirect("confirm.jsp");
                      }
         }

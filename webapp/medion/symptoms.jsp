@@ -2,7 +2,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
-
+<%@page import="DatabaseConnection.Connect" %>
 
 <!DOCTYPE html>
 <html>
@@ -133,17 +133,12 @@
   </tr>
 <%
         try {
-        String url = "jdbc:oracle:thin:@localhost:1521:xe";
-        String user = "system";
-        String pass = "root";
-        DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-        Connection con = DriverManager.getConnection(url, user,pass);;
-        Statement st=con.createStatement();
+
         System.out.println("Before all Query block 1");
         int userid = (Integer) session.getAttribute("userid");
         System.out.println("Before all Query block");
         String sql = "select symptoms from sym where userid="+userid;
-        ResultSet resultSet = st.executeQuery(sql);
+        ResultSet resultSet = Connect.st.executeQuery(sql);
 
        System.out.println(userid);
 while(resultSet.next()){

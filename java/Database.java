@@ -1,3 +1,4 @@
+import DatabaseConnection.Connect;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,24 +13,18 @@ import java.sql.Statement;
 
 public class Database extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String url = "jdbc:oracle:thin:@localhost:1521:xe";
-        String user = "system";
-        String pass = "root";
-        Connection con = null;
+
         try {
-            DriverManager.registerDriver(
-                    new oracle.jdbc.OracleDriver());
-            con = DriverManager.getConnection(url, user,
-                    pass);
+
             try{
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery("select * from student");
+
+                ResultSet rs = Connect.st.executeQuery("select * from student");
                 PrintWriter pt= resp.getWriter();
                 while(rs.next()){
                    pt.println("ID");
                   pt.println(rs.getInt("id"));
                 }
-                con.close();
+
             }
             catch (Exception ex) {
                 System.out.println(ex);

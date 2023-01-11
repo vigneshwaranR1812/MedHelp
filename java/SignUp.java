@@ -1,3 +1,4 @@
+import DatabaseConnection.Connect;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -22,14 +23,9 @@ public class SignUp extends HttpServlet {
         String url = "jdbc:oracle:thin:@localhost:1521:xe";
         String user = "system";
         String pass = "root";
-        Connection con = null;
-        Statement st=null;
+
         try {
-            DriverManager.registerDriver(
-                    new oracle.jdbc.OracleDriver());
-            con = DriverManager.getConnection(url, user,
-                    pass);
-             st= con.createStatement();
+            Connect c=new Connect();
         } catch (Exception e) {
             resp.sendRedirect("../error page/index.jsp?ecode=500");
         }
@@ -38,7 +34,7 @@ public class SignUp extends HttpServlet {
         //Inserting the Data to database
         ResultSet rs=null;
         try {
-            rs = st.executeQuery("SELECT userid FROM userDetails ORDER BY userid DESC");
+            rs = Connect.st.executeQuery("SELECT userid FROM userDetails ORDER BY userid DESC");
             if(rs.next()){
                 id=rs.getInt("userid")+1;
             }
@@ -54,7 +50,7 @@ public class SignUp extends HttpServlet {
             System.out.println(phoneNumber);
             String sql = "insert into userDetails values("+id+",'" + name + "','" + password + "','" + address + "'," + phoneNumber + ")";
 
-            int m = st.executeUpdate(sql);
+            int m = Connect.st.executeUpdate(sql);
             System.out.println(m);
             if (m == 1) {
                 System.out.println("Hey");

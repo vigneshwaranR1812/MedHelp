@@ -1,3 +1,4 @@
+import DatabaseConnection.Connect;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,25 +24,13 @@ public class AddMed extends HttpServlet {
         int lower = Integer.parseInt(req.getParameter("lowerAge"));
         String uses = req.getParameter("uses");
         int id=1;
-        String url = "jdbc:oracle:thin:@localhost:1521:xe";
-        String user = "system";
-        String pass = "root";
-        Connection con = null;
-        Statement st=null;
-        try {
-            DriverManager.registerDriver(
-                    new oracle.jdbc.OracleDriver());
-            con = DriverManager.getConnection(url, user,
-                    pass);
-            st= con.createStatement();
-        } catch (Exception e) {
-            resp.sendRedirect("../error page/index.jsp?ecode=500");
-        }
+
+
         //Fetching last person id
         //Inserting the Data to database
         ResultSet rs=null;
         try {
-            rs = st.executeQuery("SELECT medid FROM medicine ORDER BY medid DESC");
+            rs = Connect.st.executeQuery("SELECT medid FROM medicine ORDER BY medid DESC");
             if(rs.next()){
                 id=rs.getInt("medid")+1;
             }
@@ -53,7 +42,7 @@ public class AddMed extends HttpServlet {
 
             String sql = "insert into medicine values("+id+",'" + medName + "','" + medComposition + "','" + manufacturedBy + "','" + price + "'," + upper + "," + lower + ",'" + uses + "','"+medtype+"','"+sym+"')";
 
-            int m = st.executeUpdate(sql);
+            int m = Connect.st.executeUpdate(sql);
             if (m == 1) {
                 resp.sendRedirect("../admin.html");
             }

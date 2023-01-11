@@ -2,6 +2,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="DatabaseConnection.Connect" %>
 <!DOCTYPE html>
 <html>
 
@@ -123,14 +124,9 @@
 <%
 
     try {
-        String url = "jdbc:oracle:thin:@localhost:1521:xe";
-        String user = "system";
-        String pass = "root";
-        DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-        Connection con = DriverManager.getConnection(url, user,pass);
-        Statement st=con.createStatement();
+
         String sql = "select age, name, gender, phno, area from delivery";
-        ResultSet resultSet = st.executeQuery(sql);
+        ResultSet resultSet = Connect.st.executeQuery(sql);
         while(resultSet.next()){
 
 %>

@@ -2,6 +2,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="DatabaseConnection.Connect" %>
 
 
 <!DOCTYPE html>
@@ -288,17 +289,12 @@
   </tr>
 <%
         try {
-        String url = "jdbc:oracle:thin:@localhost:1521:xe";
-        String user = "system";
-        String pass = "root";
-        DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-        Connection con = DriverManager.getConnection(url, user,pass);;
-        Statement st=con.createStatement();
+
         System.out.println("Before all Query block 1");
         int userid = (Integer) session.getAttribute("userid");
         System.out.println("Before all Query block");
         String sql = "select medname,medtype,manufacturedby,price from cart,medicine,userDetails where cart.medid=medicine.medid and cart.status='active' and cart.userid=userDetails.userid and userDetails.userid="+userid;
-        ResultSet resultSet = st.executeQuery(sql);
+        ResultSet resultSet = Connect.st.executeQuery(sql);
         int amount=0;
         while(resultSet.next()){
         amount+=resultSet.getInt("price");
@@ -329,19 +325,19 @@
     <%
 
               String getAddQuery="select address from userdetails where userid="+userid;
-              ResultSet rs1=st.executeQuery(getAddQuery);
+              ResultSet rs1=Connect.st.executeQuery(getAddQuery);
               if(rs1.next()){
                 String arr[]=rs1.getString("address").split(",");
 
                 String areasss=arr[arr.length-2].trim();
                 System.out.println(areasss);
                 String queries="select did from delivery where count = (select min(count) from delivery where  area like '%"+areasss+"%') and area like '%"+areasss+"%'";
-                ResultSet rs2=st.executeQuery(queries);
+                ResultSet rs2=Connect.st.executeQuery(queries);
                 if(rs2.next()){
                   int did=rs2.getInt("did");
                   System.out.println(did);
                   String str="select did,name,age,gender,phno from delivery where did="+did;
-                  ResultSet rs=st.executeQuery(str);
+                  ResultSet rs=Connect.st.executeQuery(str);
                   if(rs.next()){
                   System.out.println(rs.getInt("age"));
                 %>

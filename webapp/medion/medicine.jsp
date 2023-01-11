@@ -2,20 +2,9 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="DatabaseConnection.Connect" %>
 <%
-        String url = "jdbc:oracle:thin:@localhost:1521:xe";
-        String user = "system";
-        String pass = "root";
-        Connection con = null;
-        Statement st=null;
-        try {
-            DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-            con = DriverManager.getConnection(url, user,pass);
-            st= con.createStatement();
-        }
-        catch (Exception e) {
-            response.sendRedirect("error%20page/index.jsp?ecode=500");
-        }
+
         ResultSet resultSet = null;
          try{
                 int id = 1;
@@ -26,7 +15,7 @@
                                    int u=(Integer) session.getAttribute("userid");
                                    ResultSet rs=null;
                                            try {
-                                               rs = st.executeQuery("SELECT carid FROM cart ORDER BY carid DESC");
+                                               rs = Connect.st.executeQuery("SELECT carid FROM cart ORDER BY carid DESC");
                                                if(rs.next()){
                                                    id=rs.getInt("carid")+1;
                                                }
@@ -35,7 +24,7 @@
                                                response.sendRedirect("error%20page/index.jsp?ecode=500");
                                            }
                                    String sqlQuery = "insert into cart values("+id+","+medId+","+u+",'active')";
-                                   st.executeUpdate(sqlQuery);
+                                   Connect.st.executeUpdate(sqlQuery);
                                    response.sendRedirect("medicine.jsp");
 
                                  }
@@ -142,7 +131,7 @@
           try{
                        boolean notFlag=true;
                       String sql = "select medid,medname,medtype,medcomposition,manufacturedby,price,uses from medicine";
-                      resultSet = st.executeQuery(sql);
+                      resultSet = Connect.st.executeQuery(sql);
 
                       int count=0;
 
@@ -150,7 +139,7 @@
                         count++;
                       }
 
-                      resultSet = st.executeQuery(sql);
+                      resultSet = Connect.st.executeQuery(sql);
 
                       for(int j=0;j<count/4;j++){
       %>
