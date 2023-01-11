@@ -265,7 +265,7 @@
             <div class="item" style="margin-right:60px">
                             <div class="box">
                               <div class="btn_container">
-                                <a href=<%="search.jsp?medId="+resultSet.getInt("medid")+"&medName="+medName+"&medtype="+medtype+"&medComposition="+medComposition+"&manufacturedby="+manufacturedby+"&price="+price+"&lowerAge="+lowerAge+"&upperAge="+upperAge+"&uses="+uses"&sym="+sym %>>
+                                <a href=<%="search.jsp?medId="+resultSet.getInt("medid")+"&medName="+medName+"&medtype="+medtype+"&medComposition="+medComposition+"&manufacturedby="+manufacturedby+"&price="+price+"&lowerAge="+lowerAge+"&upperAge="+upperAge+"&uses="+uses+"&sym="+sym %>>
                                   Add Now
                                 </a>
                               </div>
